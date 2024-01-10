@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.Locale;
 
-public class Rejestracja extends JFrame implements ActionListener {
-
+public class Rejestracja extends JFrame {
 
     JComboBox<Integer> cbRok;
     String[] miesiace = {"Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"};
@@ -15,14 +14,14 @@ public class Rejestracja extends JFrame implements ActionListener {
 
     SpinnerNumberModel dni = new SpinnerNumberModel(1, 1, 31, 1);
     JSpinner sDzien;
-    JButton bZarejestruj;
+    JButton bZarejestruj, bPowrot;
     JLabel lTitle,lLogin,lHaslo,lPowtorzHaslo,lImie,lNazwisko,lDataUrodzenia,lPlec,lEmail,lKomunikat;
     JPasswordField pHaslo,pPowtorzHaslo;
     JTextField tLogin,tImie,tNazwisko,tEmail,tPlec;
     JRadioButton rbKobieta, rbMezczyzna;
     ButtonGroup bgPlec;
     String imie,nazwisko,eMail,plec,login;
-    int dzien, miesiac,rok;
+    int dzien, miesiac,rok1;
 
     char[] haslo,powtorzHaslo;
 
@@ -30,6 +29,59 @@ public class Rejestracja extends JFrame implements ActionListener {
     Color tekstForm = new Color(248, 249, 241);
     Color tloForm = new Color(234, 158, 156);
     Color tloButton = new Color(5, 166, 218);
+
+
+    public static boolean czyMailPoprawny(String eMail){
+        return eMail.matches("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    }
+
+    boolean isEqual(char[] password1, char[] password2) {
+        if (password1.length != password2.length || password1.length == 0 ) {
+            return false;
+        }
+
+        for (int i = 0; i < password1.length; i++) {
+            if (password1[i] != password2[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public int konwertujMiesiac(String miesiac){
+        switch (miesiac){
+            case "Styczeń":
+                return 1;
+            case "Luty":
+                return 2;
+            case "Marzec":
+                return 3;
+            case "Kwiecień":
+                return 4;
+            case "Maj":
+                return 5;
+            case "Czerwiec":
+                return 6;
+            case "Lipiec":
+                return 7;
+            case "Sierpień":
+                return 8;
+            case "Wrzesień":
+                return 9;
+            case "Październik":
+                return 10;
+            case "Listopad":
+                return 11;
+            case "Grudzień":
+                return 12;
+        }
+        return 0;
+    }
+
+
+
+
     public Rejestracja(){
         setSize(500,400);
         setTitle("DVDelfin");
@@ -44,6 +96,11 @@ public class Rejestracja extends JFrame implements ActionListener {
             rok[i - poczatek] = i;
         }
 
+        bPowrot = new JButton("<-");
+        bPowrot.setBounds(10,10,45,20);
+        add(bPowrot);
+        bPowrot.setBackground(tloButton);
+        bPowrot.setForeground(tekstForm);
 
         lTitle = new JLabel("REJESTRACJA");
         lTitle.setBounds(200,20,100,20);
@@ -183,8 +240,6 @@ public class Rejestracja extends JFrame implements ActionListener {
         add(bZarejestruj);
         bZarejestruj.setBackground(tloButton);
         bZarejestruj.setForeground(tekstForm);
-        bZarejestruj.addActionListener(this);
-
 
         lKomunikat = new JLabel("");
         lKomunikat.setBounds(130,325,200,20);
@@ -192,89 +247,43 @@ public class Rejestracja extends JFrame implements ActionListener {
         lKomunikat.setForeground(tekstLabel);
 
 
-    }
 
-    public static boolean czyMailPoprawny(String eMail){
-        return eMail.matches("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
-    }
 
-    boolean isEqual(char[] password1, char[] password2) {
-        if (password1.length != password2.length || password1.length == 0 ) {
-            return false;
-        }
+        bZarejestruj.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                login = tLogin.getText();
+                imie = tImie.getText();
+                nazwisko = tNazwisko.getText();
+                haslo = pHaslo.getPassword();
+                powtorzHaslo = pPowtorzHaslo.getPassword();
+                dzien = (int) sDzien.getValue();
+                String wybranyMiesiac = (String) cbMiesiace.getSelectedItem();
+                miesiac = konwertujMiesiac(wybranyMiesiac);
+                rok1 = (int) cbRok.getSelectedItem();
 
-        for (int i = 0; i < password1.length; i++) {
-            if (password1[i] != password2[i]) {
-                return false;
+                eMail = tEmail.getText();
+
+                if (login.isEmpty()) {
+                    lKomunikat.setText("Pole Login jest puste");
+                } else if (!isEqual(haslo, powtorzHaslo)) {
+                    lKomunikat.setText("Podane hasła różnią się od siebie.");
+                } else if (imie.isEmpty()) {
+                    lKomunikat.setText("Pole Imię jest puste");
+                } else if (nazwisko.isEmpty()) {
+                    lKomunikat.setText("Pole Nazwisko jest puste");
+                } else if (!rbMezczyzna.isSelected() && !rbKobieta.isSelected()) {
+                    lKomunikat.setText("Wybierz Płeć");
+                } else if (!czyMailPoprawny(eMail)) {
+                    lKomunikat.setText("Błędny adres E-Mail");
+                } else {
+                    lKomunikat.setText("Dane poprawne");
+                }
             }
-        }
+        });
 
-        return true;
-    }
-
-    public int konwertujMiesiac(String miesiac){
-        switch (miesiac){
-            case "Styczeń":
-                return 1;
-            case "Luty":
-                return 2;
-            case "Marzec":
-                return 3;
-            case "Kwiecień":
-                return 4;
-            case "Maj":
-                return 5;
-            case "Czerwiec":
-                return 6;
-            case "Lipiec":
-                return 7;
-            case "Sierpień":
-                return 8;
-            case "Wrzesień":
-                return 9;
-            case "Październik":
-                return 10;
-            case "Listopad":
-                return 11;
-            case "Grudzień":
-                return 12;
-        }
-        return 0;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Object zrodlo = e.getSource();
-        login = tLogin.getText();
-        imie = tImie.getText();
-        nazwisko = tNazwisko.getText();
-        haslo = pHaslo.getPassword();
-        powtorzHaslo =pPowtorzHaslo.getPassword();
-        dzien = (int) sDzien.getValue();
-        String wybranyMiesiac = (String) cbMiesiace.getSelectedItem();
-        miesiac = konwertujMiesiac(wybranyMiesiac);
-        rok = (int) cbRok.getSelectedItem();
-
-        eMail = tEmail.getText();
-        if(zrodlo == bZarejestruj){
-            if(login.isEmpty()){
-                lKomunikat.setText("Pole Login jest puste");
-            }else if(!isEqual(haslo,powtorzHaslo)) {
-                lKomunikat.setText("Podane hasła różnią się od siebie.");
-            }else if(imie.isEmpty()){
-                lKomunikat.setText("Pole Imię jest puste");
-            } else if (nazwisko.isEmpty()) {
-                lKomunikat.setText("Pole Nazwisko jest puste");
-            } else if(!rbMezczyzna.isSelected() && !rbKobieta.isSelected()){
-                lKomunikat.setText("Wybierz Płeć");
-            }else if(!czyMailPoprawny(eMail)) {
-                lKomunikat.setText("Błędny adres E-Mail");
-            }else{
-                lKomunikat.setText("Dane poprawne");
-            }
-
-
-        }
+        bPowrot.addActionListener(e -> OknoWejsciowe.closeRejestracjaWindow());
+        bPowrot.addActionListener(e -> Main.main(null));
 
     }
 }
