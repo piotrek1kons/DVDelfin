@@ -14,11 +14,19 @@ public class OknoWejsciowe extends JFrame {
     }
 
     static Rejestracja rejestracja;
+    static Logowanie logowanie;
     public OknoWejsciowe() {
         BottonOpcjaLogowanie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(BottonOpcjaLogowanie,"Wybrałeś logowanie");
+                //JOptionPane.showMessageDialog(BottonOpcjaLogowanie,"Wybrałeś logowanie");
+                logowanie = new Logowanie();
+                ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+                rejestracja.setIconImage(icon.getImage());
+                logowanie.setBackground(new Color(248, 249, 241));
+                logowanie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                logowanie.setVisible(true);
+                logowanie.setLocationRelativeTo(null);
             }
         });
         BottonOpcjaRejestracja.addActionListener(new ActionListener() {
@@ -42,5 +50,8 @@ public class OknoWejsciowe extends JFrame {
     }
     public static void closeRejestracjaWindow(){
         rejestracja.dispose();
+    }
+    public static void closeLogowanieWindow(){
+        logowanie.dispose();
     }
 }
