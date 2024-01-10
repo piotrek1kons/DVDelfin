@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -14,7 +13,7 @@ public class BazaDanych {
         try{
             Scanner odczyt = new Scanner(plik);
 
-            iloscLinii = (int)Files.lines(Paths.get(nazwaPliku)).count();
+            iloscLinii = (int) Files.lines(Paths.get(nazwaPliku)).count();
 
             dane = new String[iloscLinii][rozmiar];
 
@@ -30,8 +29,17 @@ public class BazaDanych {
 
     }
 
-    public void zapisDoPliku(){
-        // TODO ....
+    public void zapisDoPliku(String[] dane) throws IOException {
+        try (FileWriter file = new FileWriter("user.txt", true);
+             BufferedWriter buffor = new BufferedWriter(file)) {
+                for(int i=0; i < dane.length;i++) {
+                buffor.write(dane[i]);
+                if (i < dane.length-1) {
+                    buffor.write(";");
+                }
+            }
+            buffor.newLine();
+        }
     }
 
     public int znajdzIndex(String[][] dane, String login){
