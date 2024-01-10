@@ -1,0 +1,18 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BazaDanych {
+    public void Zapis(String dane[]) throws IOException {
+        try (FileWriter file = new FileWriter("user.txt", true);
+             BufferedWriter buffor = new BufferedWriter(file)) {
+            for(int i=0; i < dane.length;i++) {
+                buffor.write(dane[i]);
+                if (i < dane.length-1) {
+                    buffor.write(";");
+                }
+            }
+            buffor.newLine();
+        }
+    }
+}
