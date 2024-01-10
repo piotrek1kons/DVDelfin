@@ -1,10 +1,13 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Main extends JFrame{
     static OknoWejsciowe o;
 
     public static void main(String[] args) {
         o = new OknoWejsciowe();
+        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+        o.setIconImage(icon.getImage());
         o.setContentPane(o.getPanelStartowy());
         o.setTitle("DVDelfin - Start");
         o.setSize(300,400);
