@@ -32,57 +32,6 @@ public class Rejestracja extends JFrame {
     Color tloButton = new Color(5, 166, 218);
 
 
-    public static boolean czyMailPoprawny(String eMail){
-        return eMail.matches("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
-    }
-
-    boolean isEqual(char[] password1, char[] password2) {
-        if (password1.length != password2.length || password1.length == 0 ) {
-            return false;
-        }
-
-        for (int i = 0; i < password1.length; i++) {
-            if (password1[i] != password2[i]) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public String konwertujMiesiac(String miesiac){
-        switch (miesiac){
-            case "Styczeń":
-                return "1";
-            case "Luty":
-                return "2";
-            case "Marzec":
-                return "3";
-            case "Kwiecień":
-                return "4";
-            case "Maj":
-                return "5";
-            case "Czerwiec":
-                return "6";
-            case "Lipiec":
-                return "7";
-            case "Sierpień":
-                return "8";
-            case "Wrzesień":
-                return "9";
-            case "Październik":
-                return "10";
-            case "Listopad":
-                return "11";
-            case "Grudzień":
-                return "12";
-        }
-        return "";
-    }
-
-
-
-
     public Rejestracja(){
         setSize(500,400);
         setTitle("DVDelfin");
@@ -303,4 +252,53 @@ public class Rejestracja extends JFrame {
         bPowrot.addActionListener(e -> Main.main(null));
 
     }
+
+    public static boolean czyMailPoprawny(String eMail){
+        return eMail.matches("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    }
+
+    boolean isEqual(char[] password1, char[] password2) {
+        if (password1.length != password2.length || password1.length == 0 ) {
+            return false;
+        }
+
+        for (int i = 0; i < password1.length; i++) {
+            if (password1[i] != password2[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public String konwertujMiesiac(String miesiac){
+        switch (miesiac){
+            case "Styczeń":
+                return "1";
+            case "Luty":
+                return "2";
+            case "Marzec":
+                return "3";
+            case "Kwiecień":
+                return "4";
+            case "Maj":
+                return "5";
+            case "Czerwiec":
+                return "6";
+            case "Lipiec":
+                return "7";
+            case "Sierpień":
+                return "8";
+            case "Wrzesień":
+                return "9";
+            case "Październik":
+                return "10";
+            case "Listopad":
+                return "11";
+            case "Grudzień":
+                return "12";
+        }
+        return "";
+    }
+
 }
