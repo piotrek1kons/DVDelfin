@@ -3,15 +3,26 @@ import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.Locale;
+
 public class Rejestracja extends JFrame implements ActionListener {
 
+
+    JComboBox<Integer> cbRok;
+    String[] miesiace = {"Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"};
+    JComboBox<String> cbMiesiace;
+
+    SpinnerNumberModel dni = new SpinnerNumberModel(1, 1, 31, 1);
+    JSpinner sDzien;
     JButton bZarejestruj;
-    JLabel lTitle,lLogin,lHaslo,lPowtorzHaslo,lImie,lNazwisko,lPlec,lEmail,lKomunikat;
+    JLabel lTitle,lLogin,lHaslo,lPowtorzHaslo,lImie,lNazwisko,lDataUrodzenia,lPlec,lEmail,lKomunikat;
     JPasswordField pHaslo,pPowtorzHaslo;
     JTextField tLogin,tImie,tNazwisko,tEmail,tPlec;
     JRadioButton rbKobieta, rbMezczyzna;
     ButtonGroup bgPlec;
     String imie,nazwisko,eMail,plec,login;
+    int dzien, miesiac,rok;
 
     char[] haslo,powtorzHaslo;
 
@@ -23,6 +34,16 @@ public class Rejestracja extends JFrame implements ActionListener {
         setSize(500,400);
         setTitle("DVDelfin");
         setLayout(null);
+
+        LocalDate data = LocalDate.now();
+        int poczatek = data.getYear() - 118;
+        int koniec = data.getYear() - 18;
+
+        Integer[] rok = new Integer[koniec-poczatek+1];
+        for (int i = poczatek; i <= koniec; i++) {
+            rok[i - poczatek] = i;
+        }
+
 
         lTitle = new JLabel("REJESTRACJA");
         lTitle.setBounds(200,20,100,20);
@@ -78,14 +99,44 @@ public class Rejestracja extends JFrame implements ActionListener {
         add(lNazwisko);
         lNazwisko.setForeground(tekstLabel);
 
+
         tNazwisko = new JTextField("");
         tNazwisko.setBounds(230, 150,100,20);
         add(tNazwisko);
         tNazwisko.setForeground(tekstForm);
         tNazwisko.setBackground(tloForm);
 
+        lDataUrodzenia = new JLabel("Data Urodzenia: ");
+        lDataUrodzenia.setBounds(130,175,100,20);
+        add(lDataUrodzenia);
+        lDataUrodzenia.setForeground(tekstLabel);
+
+        sDzien = new JSpinner(dni);
+        add(sDzien);
+        sDzien.setBounds(230,175,40,20);
+
+        JComponent editor = sDzien.getEditor();
+        if (editor instanceof JSpinner.DefaultEditor) {
+            JFormattedTextField textField = ((JSpinner.DefaultEditor) editor).getTextField();
+            textField.setBackground(tloForm);
+            textField.setForeground(tekstForm);
+        }
+
+
+        cbMiesiace = new JComboBox<>(miesiace);
+        add(cbMiesiace);
+        cbMiesiace.setBounds(275,175,100,20);
+        cbMiesiace.setForeground(tekstForm);
+        cbMiesiace.setBackground(tloForm);
+
+        cbRok = new JComboBox<>(rok);
+        add(cbRok);
+        cbRok.setBounds(380,175,70,20);
+        cbRok.setForeground(tekstForm);
+        cbRok.setBackground(tloForm);
+
         lPlec = new JLabel("Płeć: ");
-        lPlec.setBounds(130,175,100,20);
+        lPlec.setBounds(130,200,100,20);
         add(lPlec);
         lPlec.setForeground(tekstLabel);
 
@@ -93,7 +144,7 @@ public class Rejestracja extends JFrame implements ActionListener {
         tPlec = new JTextField("");
 
         rbKobieta = new JRadioButton("Kobieta", false);
-        rbKobieta.setBounds(230,200,100,20);
+        rbKobieta.setBounds(230,220,100,20);
         bgPlec.add(rbKobieta);
         add(rbKobieta);
         rbKobieta.addActionListener(new ActionListener() {
@@ -105,7 +156,7 @@ public class Rejestracja extends JFrame implements ActionListener {
         });
 
         rbMezczyzna = new JRadioButton("Mężczyzna", false);
-        rbMezczyzna.setBounds(230,220,100,20);
+        rbMezczyzna.setBounds(230,240,100,20);
         bgPlec.add(rbMezczyzna);
         add(rbMezczyzna);
         rbMezczyzna.addActionListener(new ActionListener() {
@@ -117,18 +168,18 @@ public class Rejestracja extends JFrame implements ActionListener {
         });
 
         lEmail = new JLabel("E-mail: ");
-        lEmail.setBounds(130,245,100,20);
+        lEmail.setBounds(130,265,100,20);
         add(lEmail);
         lEmail.setForeground(tekstLabel);
 
         tEmail = new JTextField("");
-        tEmail.setBounds(230,245,100,20);
+        tEmail.setBounds(230,265,100,20);
         add(tEmail);
         tEmail.setForeground(tekstForm);
         tEmail.setBackground(tloForm);
 
         bZarejestruj = new JButton("Zarejestruj");
-        bZarejestruj.setBounds(200,280,100,20);
+        bZarejestruj.setBounds(200,300,100,20);
         add(bZarejestruj);
         bZarejestruj.setBackground(tloButton);
         bZarejestruj.setForeground(tekstForm);
@@ -136,9 +187,10 @@ public class Rejestracja extends JFrame implements ActionListener {
 
 
         lKomunikat = new JLabel("");
-        lKomunikat.setBounds(130,305,200,20);
+        lKomunikat.setBounds(130,325,200,20);
         add(lKomunikat);
         lKomunikat.setForeground(tekstLabel);
+
 
     }
 
@@ -160,6 +212,36 @@ public class Rejestracja extends JFrame implements ActionListener {
         return true;
     }
 
+    public int konwertujMiesiac(String miesiac){
+        switch (miesiac){
+            case "Styczeń":
+                return 1;
+            case "Luty":
+                return 2;
+            case "Marzec":
+                return 3;
+            case "Kwiecień":
+                return 4;
+            case "Maj":
+                return 5;
+            case "Czerwiec":
+                return 6;
+            case "Lipiec":
+                return 7;
+            case "Sierpień":
+                return 8;
+            case "Wrzesień":
+                return 9;
+            case "Październik":
+                return 10;
+            case "Listopad":
+                return 11;
+            case "Grudzień":
+                return 12;
+        }
+        return 0;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object zrodlo = e.getSource();
@@ -168,6 +250,11 @@ public class Rejestracja extends JFrame implements ActionListener {
         nazwisko = tNazwisko.getText();
         haslo = pHaslo.getPassword();
         powtorzHaslo =pPowtorzHaslo.getPassword();
+        dzien = (int) sDzien.getValue();
+        String wybranyMiesiac = (String) cbMiesiace.getSelectedItem();
+        miesiac = konwertujMiesiac(wybranyMiesiac);
+        rok = (int) cbRok.getSelectedItem();
+
         eMail = tEmail.getText();
         if(zrodlo == bZarejestruj){
             if(login.isEmpty()){
