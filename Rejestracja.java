@@ -3,7 +3,9 @@ import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Locale;
 
 public class Rejestracja extends JFrame {
@@ -20,8 +22,7 @@ public class Rejestracja extends JFrame {
     JTextField tLogin,tImie,tNazwisko,tEmail,tPlec;
     JRadioButton rbKobieta, rbMezczyzna;
     ButtonGroup bgPlec;
-    String imie,nazwisko,eMail,plec,login;
-    int dzien, miesiac,rok1;
+    String imie,nazwisko,eMail,plec,login,dzien, miesiac,rok1;
 
     char[] haslo,powtorzHaslo;
 
@@ -49,34 +50,34 @@ public class Rejestracja extends JFrame {
         return true;
     }
 
-    public int konwertujMiesiac(String miesiac){
+    public String konwertujMiesiac(String miesiac){
         switch (miesiac){
             case "Styczeń":
-                return 1;
+                return "1";
             case "Luty":
-                return 2;
+                return "2";
             case "Marzec":
-                return 3;
+                return "3";
             case "Kwiecień":
-                return 4;
+                return "4";
             case "Maj":
-                return 5;
+                return "5";
             case "Czerwiec":
-                return 6;
+                return "6";
             case "Lipiec":
-                return 7;
+                return "7";
             case "Sierpień":
-                return 8;
+                return "8";
             case "Wrzesień":
-                return 9;
+                return "9";
             case "Październik":
-                return 10;
+                return "10";
             case "Listopad":
-                return 11;
+                return "11";
             case "Grudzień":
-                return 12;
+                return "12";
         }
-        return 0;
+        return "";
     }
 
 
@@ -252,15 +253,16 @@ public class Rejestracja extends JFrame {
         bZarejestruj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String[] dane = new String[9];
                 login = tLogin.getText();
                 imie = tImie.getText();
                 nazwisko = tNazwisko.getText();
                 haslo = pHaslo.getPassword();
                 powtorzHaslo = pPowtorzHaslo.getPassword();
-                dzien = (int) sDzien.getValue();
+                dzien = sDzien.getValue().toString();
                 String wybranyMiesiac = (String) cbMiesiace.getSelectedItem();
                 miesiac = konwertujMiesiac(wybranyMiesiac);
-                rok1 = (int) cbRok.getSelectedItem();
+                rok1 = cbRok.getSelectedItem().toString();
 
                 eMail = tEmail.getText();
 
@@ -277,6 +279,21 @@ public class Rejestracja extends JFrame {
                 } else if (!czyMailPoprawny(eMail)) {
                     lKomunikat.setText("Błędny adres E-Mail");
                 } else {
+                    dane[0]= login;
+                    dane[1]= new String(haslo);
+                    dane[2]= imie;
+                    dane[3]= nazwisko;
+                    dane[4]= dzien;
+                    dane[5]= miesiac;
+                    dane[6]= rok1;
+                    dane[7]= plec;
+                    dane[8]= eMail;
+                    BazaDanych baza = new BazaDanych();
+                    try {
+                        baza.Zapis(dane);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     lKomunikat.setText("Dane poprawne");
                 }
             }
