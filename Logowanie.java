@@ -19,13 +19,12 @@ public class Logowanie extends JFrame {
         Color tloButton = new Color(5, 166, 218);
 
         String nazwaPliku = "user.txt";
+        String[][] daneUzytkownika;
 
         public Logowanie(){
             setSize(500,400);
             setTitle("DVDelfin");
             setLayout(null);
-
-
 
             lTitle = new JLabel("LOGOWANIE");
             lTitle.setBounds(200,20,100,20);
@@ -66,19 +65,23 @@ public class Logowanie extends JFrame {
                     login = tLogin.getText();
                     haslo = pHaslo.getPassword();
 
+                    // inicjacja zmiennych
                     BazaDanych b = new BazaDanych();
                     char[] hasloUzytkownika = {' '};
                     int indexUzytkownika;
-                    String[][] daneUzytkownika;
+
 
                     try{
+                        // wyszukiwanie uzytkownika
                         daneUzytkownika = b.odczytZPliku(9,nazwaPliku);
                         indexUzytkownika = b.znajdzIndex(daneUzytkownika,login);
+                        hasloUzytkownika = daneUzytkownika[indexUzytkownika][1].toCharArray();
 
+                        // logowanie
                         if(zrodlo == bZaloguj){
                             if(login.isEmpty()){
                                 lKomunikat.setText("Pole Login jest puste");
-                            }else if(!isEqual(haslo,hasloUzytkownika) || indexUzytkownika == -1) {
+                            }else if(indexUzytkownika == -1 || !isEqual(haslo,hasloUzytkownika)) {
                                 lKomunikat.setText("Niepoprawny login lub hasło");
                             }else{
                                 lKomunikat.setText("Dane poprawne. Następuje logowanie");
