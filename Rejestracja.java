@@ -290,7 +290,7 @@ public class Rejestracja extends JFrame {
                     dane[8]= eMail;
                     BazaDanych baza = new BazaDanych();
                     try {
-                        baza.Zapis(dane);
+                        baza.zapisDoPliku(dane);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
