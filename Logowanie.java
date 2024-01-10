@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 
 public class Logowanie extends JFrame {
-        JButton bZaloguj;
+        JButton bZaloguj,bPowrot;
         JLabel lLogin,lHaslo,lTitle,lKomunikat;
         JPasswordField pHaslo;
         JTextField tLogin;
@@ -25,6 +25,12 @@ public class Logowanie extends JFrame {
             setSize(500,400);
             setTitle("DVDelfin");
             setLayout(null);
+
+            bPowrot = new JButton("<-");
+            bPowrot.setBounds(10,10,45,20);
+            add(bPowrot);
+            bPowrot.setBackground(tloButton);
+            bPowrot.setForeground(tekstForm);
 
             lTitle = new JLabel("LOGOWANIE");
             lTitle.setBounds(200,20,100,20);
@@ -58,6 +64,12 @@ public class Logowanie extends JFrame {
             add(bZaloguj);
             bZaloguj.setBackground(tloButton);
             bZaloguj.setForeground(tekstForm);
+
+            lKomunikat = new JLabel("");
+            lKomunikat.setBounds(130,325,200,20);
+            add(lKomunikat);
+            lKomunikat.setForeground(tekstLabel);
+
             bZaloguj.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -96,10 +108,8 @@ public class Logowanie extends JFrame {
                 }
             });
 
-            lKomunikat = new JLabel("");
-            lKomunikat.setBounds(130,325,200,20);
-            add(lKomunikat);
-            lKomunikat.setForeground(tekstLabel);
+            bPowrot.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
+            bPowrot.addActionListener(e -> Main.main(null));
 
         }
 
