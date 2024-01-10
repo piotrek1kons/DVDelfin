@@ -22,7 +22,7 @@ public class OknoWejsciowe extends JFrame {
                 //JOptionPane.showMessageDialog(BottonOpcjaLogowanie,"Wybrałeś logowanie");
                 logowanie = new Logowanie();
                 ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
-                rejestracja.setIconImage(icon.getImage());
+                logowanie.setIconImage(icon.getImage());
                 logowanie.setBackground(new Color(248, 249, 241));
                 logowanie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 logowanie.setVisible(true);
