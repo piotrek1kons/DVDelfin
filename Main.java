@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 public class Main extends JFrame{
     static OknoWejsciowe o;
 
     public static void main(String[] args) {
+
         o = new OknoWejsciowe();
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         o.setIconImage(icon.getImage());
@@ -14,6 +16,7 @@ public class Main extends JFrame{
         o.setVisible(true);
         o.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         o.setLocationRelativeTo(null);
+
     }
 
     public static void closeMainWindow() {

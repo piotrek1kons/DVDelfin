@@ -12,6 +12,8 @@ public class MenuGlowne extends JFrame {
     private JButton buttonUstawienia;
     private JButton buttonWyloguj;
 
+    static Klient klient;
+
     public JPanel getPanelMenuGlownego() {
         return panelGlowny;
     }
@@ -23,22 +25,30 @@ public class MenuGlowne extends JFrame {
         buttonWypozyczFilm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(buttonWypozyczFilm,"Wybrałeś wypozyczenie filmu");
+                //JOptionPane.showMessageDialog(buttonWypozyczFilm,"Wybrałeś wypozyczenie filmu");
 
             }
         });
         buttonOddajFilm.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(buttonOddajFilm,"Wybrałeś oddanie filmu");
+                    //JOptionPane.showMessageDialog(buttonOddajFilm,"Wybrałeś oddanie filmu");
+
 
                 }
             });
         buttonSprawdzWypozyczoneFilmy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(buttonSprawdzWypozyczoneFilmy,"Wybrałeś sprawdzenie wypozyczonych filmów");
-
+                //JOptionPane.showMessageDialog(buttonSprawdzWypozyczoneFilmy,"Wybrałeś sprawdzenie wypozyczonych filmów");
+                klient = new Klient();
+                ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+                klient.setIconImage(icon.getImage());
+                klient.setBackground(new Color(248, 249, 241));
+                klient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                klient.setVisible(true);
+                klient.setLocationRelativeTo(null);
+                // klient.wyswietlWypozyczoneFilmy(); ??????
             }
         });
         buttonUstawienia.addActionListener(new ActionListener() {

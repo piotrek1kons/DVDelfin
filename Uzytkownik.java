@@ -1,4 +1,6 @@
-public class Uzytkownik {
+import javax.swing.*;
+
+public class Uzytkownik extends JFrame{
     private String login;
     private char[] haslo;
     private String imie;

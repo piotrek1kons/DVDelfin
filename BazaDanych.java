@@ -41,13 +41,13 @@ public class BazaDanych {
         }
     }
 
-    public int znajdzIndex(String[][] dane, String login){
+    public int znajdzIndex(String[][] dane, String nazwa){
         if(dane == null){
             return -1;
         }else{
             int rozmiar = dane.length;
             for (int i=0; i<rozmiar; i++){
-                if (dane[i][0].equals(login)) return i;
+                if (dane[i][0].equals(nazwa)) return i;
             }
 
         }
