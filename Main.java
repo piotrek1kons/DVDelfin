@@ -14,7 +14,6 @@ public class Main extends JFrame{
         o.setVisible(true);
         o.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         o.setLocationRelativeTo(null);
-
     }
 
     public static void closeMainWindow() {
