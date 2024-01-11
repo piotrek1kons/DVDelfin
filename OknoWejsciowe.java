@@ -40,11 +40,11 @@ public class OknoWejsciowe extends JFrame {
                 rejestracja.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 rejestracja.setVisible(true);
                 rejestracja.setLocationRelativeTo(null);
-                //JOptionPane.showMessageDialog(BottonOpcjaRejestracja,"Wybrałeś rejestracje");
             }
         });
 
         BottonOpcjaRejestracja.addActionListener(e -> Main.closeMainWindow());
+        BottonOpcjaLogowanie.addActionListener(e -> Main.closeMainWindow());
 
 
     }
