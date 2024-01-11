@@ -56,6 +56,8 @@ public class MenuGlowne extends JFrame {
             }
         });
 
+        buttonWyloguj.addActionListener(e -> Logowanie.closeMenuWindow());
+        buttonWyloguj.addActionListener(e -> Main.main(null));
 
     }
 }
