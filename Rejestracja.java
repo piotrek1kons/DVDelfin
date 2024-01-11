@@ -3,6 +3,7 @@ import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -25,7 +26,8 @@ public class Rejestracja extends JFrame {
     String imie,nazwisko,eMail,plec,login,dzien, miesiac,rok1;
 
     char[] haslo,powtorzHaslo;
-
+    String[][] daneUzytkownika;
+    String nazwaPliku = "user.txt";
     Color tekstLabel = new Color(15, 29, 68);
     Color tekstForm = new Color(248, 249, 241);
     Color tloForm = new Color(234, 158, 156);
@@ -215,36 +217,48 @@ public class Rejestracja extends JFrame {
 
                 eMail = tEmail.getText();
 
-                if (login.isEmpty()) {
-                    lKomunikat.setText("Pole Login jest puste");
-                } else if (!isEqual(haslo, powtorzHaslo)) {
-                    lKomunikat.setText("Podane hasła różnią się od siebie.");
-                } else if (imie.isEmpty()) {
-                    lKomunikat.setText("Pole Imię jest puste");
-                } else if (nazwisko.isEmpty()) {
-                    lKomunikat.setText("Pole Nazwisko jest puste");
-                } else if (!rbMezczyzna.isSelected() && !rbKobieta.isSelected()) {
-                    lKomunikat.setText("Wybierz Płeć");
-                } else if (!czyMailPoprawny(eMail)) {
-                    lKomunikat.setText("Błędny adres E-Mail");
-                } else {
-                    dane[0]= login;
-                    dane[1]= new String(haslo);
-                    dane[2]= imie;
-                    dane[3]= nazwisko;
-                    dane[4]= dzien;
-                    dane[5]= miesiac;
-                    dane[6]= rok1;
-                    dane[7]= plec;
-                    dane[8]= eMail;
-                    BazaDanych baza = new BazaDanych();
-                    try {
-                        baza.zapisDoPliku(dane);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
+
+                BazaDanych baza = new BazaDanych();
+                int indexUzytkownika;
+                try {
+                    daneUzytkownika = baza.odczytZPliku(9,"user.txt");
+                    indexUzytkownika = baza.znajdzIndex(daneUzytkownika,login);
+                    if (login.isEmpty()) {
+                        lKomunikat.setText("Pole Login jest puste");
+                    } else if(indexUzytkownika != -1){
+                        lKomunikat.setText("Istnieje użytkownik o takim loginie");
+                    } else if (!isEqual(haslo, powtorzHaslo)) {
+                        lKomunikat.setText("Podane hasła różnią się od siebie.");
+                    } else if (imie.isEmpty()) {
+                        lKomunikat.setText("Pole Imię jest puste");
+                    } else if (nazwisko.isEmpty()) {
+                        lKomunikat.setText("Pole Nazwisko jest puste");
+                    } else if (!rbMezczyzna.isSelected() && !rbKobieta.isSelected()) {
+                        lKomunikat.setText("Wybierz Płeć");
+                    } else if (!czyMailPoprawny(eMail)) {
+                        lKomunikat.setText("Błędny adres E-Mail");
+                    } else {
+                        dane[0]= login;
+                        dane[1]= new String(haslo);
+                        dane[2]= imie;
+                        dane[3]= nazwisko;
+                        dane[4]= dzien;
+                        dane[5]= miesiac;
+                        dane[6]= rok1;
+                        dane[7]= plec;
+                        dane[8]= eMail;
+                        try {
+                            baza.zapisDoPliku(dane);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        lKomunikat.setText("Dane poprawne");
                     }
-                    lKomunikat.setText("Dane poprawne");
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
                 }
+
+
             }
         });
 
@@ -300,5 +314,9 @@ public class Rejestracja extends JFrame {
         }
         return "";
     }
+
+
+
+
 
 }

@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class BazaDanych {
     public String[][] odczytZPliku(int rozmiar, String nazwaPliku) throws FileNotFoundException {
-
         File plik = new File(nazwaPliku);
         String[][] dane = null;
         int iloscLinii = 0;
@@ -43,10 +42,16 @@ public class BazaDanych {
     }
 
     public int znajdzIndex(String[][] dane, String login){
-        int rozmiar = dane.length;
-        for (int i=0; i<rozmiar; i++){
-            if (dane[i][0].equals(login)) return i;
+        if(dane == null){
+            return -1;
+        }else{
+            int rozmiar = dane.length;
+            for (int i=0; i<rozmiar; i++){
+                if (dane[i][0].equals(login)) return i;
+            }
+
         }
+
 
         return -1;
     }
