@@ -6,124 +6,131 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 
 public class Logowanie extends JFrame {
-        JButton bZaloguj,bPowrot;
-        JLabel lLogin,lHaslo,lTitle,lKomunikat;
-        JPasswordField pHaslo;
-        JTextField tLogin;
-        String login;
-        char[] haslo;
+    JButton bZaloguj,bPowrot;
+    JLabel lLogin,lHaslo,lTitle,lKomunikat;
+    JPasswordField pHaslo;
+    JTextField tLogin;
+    String login;
+    char[] haslo;
 
-        Color tekstLabel = new Color(15, 29, 68);
-        Color tekstForm = new Color(248, 249, 241);
-        Color tloForm = new Color(234, 158, 156);
-        Color tloButton = new Color(5, 166, 218);
+    Color tekstLabel = new Color(15, 29, 68);
+    Color tekstForm = new Color(248, 249, 241);
+    Color tloForm = new Color(234, 158, 156);
+    Color tloButton = new Color(5, 166, 218);
 
-        String nazwaPliku = "user.txt";
-        String[][] daneUzytkownika;
+    String nazwaPliku = "user.txt";
+    String[][] daneUzytkownika;
+    static MenuGlowne m;
 
-        public Logowanie(){
-            setSize(500,400);
-            setTitle("DVDelfin");
-            setLayout(null);
+    public Logowanie(){
+        setSize(500,400);
+        setTitle("DVDelfin");
+        setLayout(null);
 
-            bPowrot = new JButton("<-");
-            bPowrot.setBounds(10,10,45,20);
-            add(bPowrot);
-            bPowrot.setBackground(tloButton);
-            bPowrot.setForeground(tekstForm);
+        bPowrot = new JButton("<-");
+        bPowrot.setBounds(10,10,45,20);
+        add(bPowrot);
+        bPowrot.setBackground(tloButton);
+        bPowrot.setForeground(tekstForm);
 
-            lTitle = new JLabel("LOGOWANIE");
-            lTitle.setBounds(200,20,100,20);
-            add(lTitle);
-            lTitle.setForeground(tekstLabel);
+        lTitle = new JLabel("LOGOWANIE");
+        lTitle.setBounds(200,20,100,20);
+        add(lTitle);
+        lTitle.setForeground(tekstLabel);
 
-            lLogin = new JLabel("Login: ");
-            lLogin.setBounds(130,50,100,20);
-            add(lLogin);
-            lLogin.setForeground(tekstLabel);
+        lLogin = new JLabel("Login: ");
+        lLogin.setBounds(130,50,100,20);
+        add(lLogin);
+        lLogin.setForeground(tekstLabel);
 
-            tLogin = new JTextField("");
-            tLogin.setBounds(230,50,100,20);
-            add(tLogin);
-            tLogin.setForeground(tekstForm);
-            tLogin.setBackground(tloForm);
+        tLogin = new JTextField("");
+        tLogin.setBounds(230,50,100,20);
+        add(tLogin);
+        tLogin.setForeground(tekstForm);
+        tLogin.setBackground(tloForm);
 
-            lHaslo = new JLabel("Hasło: ");
-            lHaslo.setBounds(130,75,100,20);
-            add(lHaslo);
-            lHaslo.setForeground(tekstLabel);
+        lHaslo = new JLabel("Hasło: ");
+        lHaslo.setBounds(130,75,100,20);
+        add(lHaslo);
+        lHaslo.setForeground(tekstLabel);
 
-            pHaslo = new JPasswordField("");
-            pHaslo.setBounds(230,75,100,20);
-            add(pHaslo);
-            pHaslo.setForeground(tekstForm);
-            pHaslo.setBackground(tloForm);
+        pHaslo = new JPasswordField("");
+        pHaslo.setBounds(230,75,100,20);
+        add(pHaslo);
+        pHaslo.setForeground(tekstForm);
+        pHaslo.setBackground(tloForm);
 
-            bZaloguj = new JButton("Zarejestruj");
-            bZaloguj.setBounds(200,300,100,20);
-            add(bZaloguj);
-            bZaloguj.setBackground(tloButton);
-            bZaloguj.setForeground(tekstForm);
+        bZaloguj = new JButton("Zaloguj");
+        bZaloguj.setBounds(200,300,100,20);
+        add(bZaloguj);
+        bZaloguj.setBackground(tloButton);
+        bZaloguj.setForeground(tekstForm);
 
-            lKomunikat = new JLabel("");
-            lKomunikat.setBounds(130,325,200,20);
-            add(lKomunikat);
-            lKomunikat.setForeground(tekstLabel);
+        lKomunikat = new JLabel("");
+        lKomunikat.setBounds(130,325,200,20);
+        add(lKomunikat);
+        lKomunikat.setForeground(tekstLabel);
 
-            bZaloguj.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Object zrodlo = e.getSource();
-                    login = tLogin.getText();
-                    haslo = pHaslo.getPassword();
+        bZaloguj.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Object zrodlo = e.getSource();
+                login = tLogin.getText();
+                haslo = pHaslo.getPassword();
 
-                    // inicjacja zmiennych
-                    BazaDanych b = new BazaDanych();
-                    char[] hasloUzytkownika = {' '};
-                    int indexUzytkownika;
-
-
-                    try{
-                        // wyszukiwanie uzytkownika
-                        daneUzytkownika = b.odczytZPliku(9,nazwaPliku);
-                        indexUzytkownika = b.znajdzIndex(daneUzytkownika,login);
-                        hasloUzytkownika = daneUzytkownika[indexUzytkownika][1].toCharArray();
-
-                        // logowanie
-                        if(zrodlo == bZaloguj){
-                            if(login.isEmpty()){
-                                lKomunikat.setText("Pole Login jest puste");
-                            }else if(indexUzytkownika == -1 || !isEqual(haslo,hasloUzytkownika)) {
-                                lKomunikat.setText("Niepoprawny login lub hasło");
-                            }else{
-                                lKomunikat.setText("Dane poprawne. Następuje logowanie");
-                            }
+                // inicjacja zmiennych
+                BazaDanych b = new BazaDanych();
+                char[] hasloUzytkownika = {' '};
+                int indexUzytkownika;
 
 
-                        }
+                try{
+                    // wyszukiwanie uzytkownika
+                    daneUzytkownika = b.odczytZPliku(9,nazwaPliku);
+                    indexUzytkownika = b.znajdzIndex(daneUzytkownika,login);
+                    hasloUzytkownika = daneUzytkownika[indexUzytkownika][1].toCharArray();
 
-                    }catch(Exception ex){
-                        System.out.println(ex);
+                    // logowanie
+
+                    if(login.isEmpty()){
+                        lKomunikat.setText("Pole Login jest puste");
+                    }else if(indexUzytkownika == -1 || !isEqual(haslo,hasloUzytkownika)) {
+                        lKomunikat.setText("Niepoprawny login lub hasło");
+                    }else{
+                        m = new MenuGlowne();
+                        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+                        m.setIconImage(icon.getImage());
+                        m.setContentPane(m.getPanelMenuGlownego());
+                        m.setTitle("DVDelfin - Start");
+                        m.setSize(300,400);
+                        m.setVisible(true);
+                        m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        m.setLocationRelativeTo(null);
+                        lKomunikat.setText("Dane poprawne. Następuje logowanie");
                     }
+                }catch(Exception ex){
+                    System.out.println(ex);
                 }
-            });
-
-            bPowrot.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
-            bPowrot.addActionListener(e -> Main.main(null));
-
-        }
-
-        public boolean isEqual(char[] password1, char[] password2) {
-            if (password1.length != password2.length || password1.length == 0 )
-                return false;
-
-
-            for (int i = 0; i < password1.length; i++) {
-                if (password1[i] != password2[i])
-                    return false;
             }
+        });
 
-            return true;
+        bPowrot.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
+        bPowrot.addActionListener(e -> Main.main(null));
+        bZaloguj.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
+
+    }
+
+    public boolean isEqual(char[] password1, char[] password2) {
+        if (password1.length != password2.length || password1.length == 0 )
+            return false;
+
+
+        for (int i = 0; i < password1.length; i++) {
+            if (password1[i] != password2[i])
+                return false;
         }
+
+        return true;
+    }
 
 }
