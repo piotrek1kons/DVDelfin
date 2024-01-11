@@ -315,8 +315,4 @@ public class Rejestracja extends JFrame {
         return "";
     }
 
-
-
-
-
 }
