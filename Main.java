@@ -10,7 +10,7 @@ public class Main extends JFrame{
         o.setIconImage(icon.getImage());
         o.setContentPane(o.getPanelStartowy());
         o.setTitle("DVDelfin - Start");
-        o.setSize(300,400);
+        o.setSize(300,500);
         o.setVisible(true);
         o.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         o.setLocationRelativeTo(null);
