@@ -102,7 +102,7 @@ public class Logowanie extends JFrame {
                         m.setIconImage(icon.getImage());
                         m.setContentPane(m.getPanelMenuGlownego());
                         m.setTitle("DVDelfin - Start");
-                        m.setSize(300,400);
+                        m.setSize(300,600);
                         m.setVisible(true);
                         m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         m.setLocationRelativeTo(null);
@@ -118,8 +118,12 @@ public class Logowanie extends JFrame {
         bPowrot.addActionListener(e -> Main.main(null));
         bZaloguj.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
 
+
     }
 
+    public static void closeMenuWindow() {
+        m.dispose();
+    }
     public boolean isEqual(char[] password1, char[] password2) {
         if (password1.length != password2.length || password1.length == 0 )
             return false;
