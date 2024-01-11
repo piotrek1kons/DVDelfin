@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuGlowne {
+public class MenuGlowne extends JFrame {
     private JPanel panelGlowny;
     private JPanel panelTytulowy;
     private JButton buttonWypozyczFilm;
