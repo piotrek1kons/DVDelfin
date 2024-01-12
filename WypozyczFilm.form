@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WypozyczFilm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="473" height="692"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="88009">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <horizontalScrollBarPolicy value="30"/>
+          <verticalScrollBarPolicy value="22"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="c40d4" layout-manager="GridLayoutManager" row-count="53" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <background color="-1708828"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="9f05b" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-6573110"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="1237b" class="javax.swing.JLabel" binding="panelTytulowy">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-6573110"/>
+                      <text value="Wypożycz Film"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="42386" class="javax.swing.JButton" binding="asterixMisjaKleopatraButton">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Asterix Misja Kleopatra"/>
+                  <verticalAlignment value="0"/>
+                </properties>
+              </component>
+              <vspacer id="7e924">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="7ee15" class="javax.swing.JButton" binding="avatarIstotaWodyButton" default-binding="true">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Avatar Istota Wody"/>
+                </properties>
+              </component>
+              <vspacer id="664e6">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="bd83" class="javax.swing.JButton" binding="avatarButton" default-binding="true">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Avatar"/>
+                </properties>
+              </component>
+              <vspacer id="df86e">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="5708e" class="javax.swing.JButton" binding="barbieButton" default-binding="true">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Barbie"/>
+                </properties>
+              </component>
+              <vspacer id="35441">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="5bf32" class="javax.swing.JButton" binding="charlieIFabrykaCzekoladyButton" default-binding="true">
+                <constraints>
+                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Charlie i Fabryka Czekolady"/>
+                </properties>
+              </component>
+              <vspacer id="c5055">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="7da7a" class="javax.swing.JButton" binding="chlopiButton">
+                <constraints>
+                  <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Chłopi"/>
+                </properties>
+              </component>
+              <vspacer id="1f99e">
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="81225" class="javax.swing.JButton" binding="cocoButton" default-binding="true">
+                <constraints>
+                  <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Coco"/>
+                </properties>
+              </component>
+              <vspacer id="b9eca">
+                <constraints>
+                  <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="25af6" class="javax.swing.JButton" binding="cruellaButton" default-binding="true">
+                <constraints>
+                  <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Cruella"/>
+                </properties>
+              </component>
+              <vspacer id="1e76e">
+                <constraints>
+                  <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="5abf9" class="javax.swing.JButton" binding="encantoButton" default-binding="true">
+                <constraints>
+                  <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Encanto"/>
+                </properties>
+              </component>
+              <vspacer id="1f9f2">
+                <constraints>
+                  <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="a745b" class="javax.swing.JButton" binding="heartstopperButton" default-binding="true">
+                <constraints>
+                  <grid row="19" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Heartstopper"/>
+                </properties>
+              </component>
+              <component id="e3869" class="javax.swing.JButton" binding="harryPotterICzaraButton">
+                <constraints>
+                  <grid row="23" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Czara Ognia"/>
+                </properties>
+              </component>
+              <vspacer id="234a0">
+                <constraints>
+                  <grid row="40" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="9a978" class="javax.swing.JButton" binding="harryPotterIInsygniaButton" default-binding="true">
+                <constraints>
+                  <grid row="41" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Insygnia Śmierci cz.1"/>
+                </properties>
+              </component>
+              <vspacer id="30a53">
+                <constraints>
+                  <grid row="42" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="1f31e" class="javax.swing.JButton" binding="harryPotterIInsygniaButton1" default-binding="true">
+                <constraints>
+                  <grid row="43" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Insygnia Śmierci cz.2"/>
+                </properties>
+              </component>
+              <vspacer id="81e8f">
+                <constraints>
+                  <grid row="44" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="79941" class="javax.swing.JButton" binding="harryPotterIKamienButton">
+                <constraints>
+                  <grid row="45" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Kamień Filozoficzny"/>
+                </properties>
+              </component>
+              <vspacer id="6cae2">
+                <constraints>
+                  <grid row="46" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="4536d" class="javax.swing.JButton" binding="harryPotterIKomnataButton" default-binding="true">
+                <constraints>
+                  <grid row="47" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Komnata Tajemnic"/>
+                </properties>
+              </component>
+              <vspacer id="8d344">
+                <constraints>
+                  <grid row="48" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="969a9" class="javax.swing.JButton" binding="harryPotterIKsiazeButton">
+                <constraints>
+                  <grid row="49" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Książę Półkrwi"/>
+                </properties>
+              </component>
+              <vspacer id="f77bd">
+                <constraints>
+                  <grid row="50" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="81c00" class="javax.swing.JButton" binding="harryPotterIWiezienButton">
+                <constraints>
+                  <grid row="51" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Więzień Azkabanu"/>
+                </properties>
+              </component>
+              <vspacer id="6e1f9">
+                <constraints>
+                  <grid row="52" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="2e977" class="javax.swing.JButton" binding="harryPotterIZakonButton">
+                <constraints>
+                  <grid row="21" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Harry Potter i Zakon Feniksa"/>
+                </properties>
+              </component>
+              <vspacer id="eb3fd">
+                <constraints>
+                  <grid row="20" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <vspacer id="b1746">
+                <constraints>
+                  <grid row="22" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="3d5f8" class="javax.swing.JButton" binding="krainaLodu2Button" default-binding="true">
+                <constraints>
+                  <grid row="39" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Kraina Lodu 2"/>
+                </properties>
+              </component>
+              <vspacer id="9de28">
+                <constraints>
+                  <grid row="38" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="f456a" class="javax.swing.JButton" binding="krainaLoduButton" default-binding="true">
+                <constraints>
+                  <grid row="37" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Kraina Lodu"/>
+                </properties>
+              </component>
+              <vspacer id="76044">
+                <constraints>
+                  <grid row="36" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="a42ee" class="javax.swing.JButton" binding="oppenheimerButton" default-binding="true">
+                <constraints>
+                  <grid row="35" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Oppenheimer"/>
+                </properties>
+              </component>
+              <vspacer id="3f73">
+                <constraints>
+                  <grid row="34" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="ac2c6" class="javax.swing.JButton" binding="piecKoszmarnychNocyButton">
+                <constraints>
+                  <grid row="33" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Pięć Koszmarnych Nocy"/>
+                </properties>
+              </component>
+              <component id="3f3dc" class="javax.swing.JButton" binding="pulpFictionButton" default-binding="true">
+                <constraints>
+                  <grid row="32" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Pulp Fiction"/>
+                </properties>
+              </component>
+              <vspacer id="14016">
+                <constraints>
+                  <grid row="31" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="24ea9" class="javax.swing.JButton" binding="ratatujButton" default-binding="true">
+                <constraints>
+                  <grid row="30" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Ratatuj"/>
+                </properties>
+              </component>
+              <vspacer id="72a43">
+                <constraints>
+                  <grid row="29" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="59282" class="javax.swing.JButton" binding="toNieWypandaButton" default-binding="true">
+                <constraints>
+                  <grid row="28" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="To nie wypanda"/>
+                </properties>
+              </component>
+              <vspacer id="7ef">
+                <constraints>
+                  <grid row="27" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="93b9d" class="javax.swing.JButton" binding="wGlowieSieNieButton1">
+                <constraints>
+                  <grid row="26" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="W głowie się nie mieści"/>
+                </properties>
+              </component>
+              <vspacer id="e9ffa">
+                <constraints>
+                  <grid row="25" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="635f0" class="javax.swing.JButton" binding="zywotBrianaButton">
+                <constraints>
+                  <grid row="24" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1401188"/>
+                  <text value="Żywot Briana"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

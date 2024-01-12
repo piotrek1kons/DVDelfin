@@ -48,6 +48,7 @@ public class Rejestracja extends JFrame {
             rok[i - poczatek] = i;
         }
 
+
         bPowrot = new JButton("<-");
         bPowrot.setBounds(10,10,45,20);
         add(bPowrot);
