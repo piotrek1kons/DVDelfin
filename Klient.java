@@ -18,14 +18,6 @@ public class Klient extends Uzytkownik {
     private String wszystkieFilmyPath = "filmy.txt";  // login ; tytuł
     BazaDanych b;
 
-    JButton bPowrot;
-    JLabel lTitle,lPustaTablica;
-
-    Color tekstLabel = new Color(15, 29, 68);
-    Color tekstForm = new Color(248, 249, 241);
-    Color tloForm = new Color(234, 158, 156);
-    Color tloButton = new Color(5, 166, 218);
-
     public Klient(){
         super();
     }
@@ -52,60 +44,46 @@ public class Klient extends Uzytkownik {
     }
 
     public void wyswietlWypozyczoneFilmy(){
-        if (wypozyczoneFilmy.size() != 0){
-            rozmiarOkna();
-            przyciskPowrotu();
-            setTytul("Wypożyczone Filmy");
-            int rozmiar = wypozyczoneFilmy.size();
 
-            JPanel galleryPanel = new JPanel(new GridLayout(0, 2, 10, 10));
-            int index;
-
-            for (int i=0; i<rozmiar; i++){
-                JButton imageButton = new JButton();
-                index = b.znajdzIndex(wszystkieFilmy, wypozyczoneFilmy.elementAt(i));
-
-                ImageIcon icon = resizeImage("filmy/"+wszystkieFilmy[index][1],240,480);
-                imageButton.setIcon(icon);
-                galleryPanel.add(imageButton);
-            }
-
-            // scrollowanie
-            JScrollPane scrollPane = new JScrollPane(galleryPanel);
-            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-
-            add(galleryPanel);
-
-        }else{
-            lPustaTablica = new JLabel("Brak wypożyczonych filmów");
-            lPustaTablica.setBounds(130,150,100,20);
-            add(lPustaTablica);
-            lPustaTablica.setForeground(tekstLabel);
-        }
+        GaleriaWypozyczonych galeria = new GaleriaWypozyczonych(wypozyczoneFilmy,wszystkieFilmy,b);
+        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+        galeria.setIconImage(icon.getImage());
+        galeria.setContentPane(galeria.getPanelGaleriaWypozyczen());
+        galeria.setTitle("DVDelfin - Start");
+        galeria.setSize(300,500);
+        galeria.setVisible(true);
+        galeria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        galeria.setLocationRelativeTo(null);
 
 
     }
     public void zarzadzajFilmami(){
-        rozmiarOkna();
-        przyciskPowrotu();
-        setTytul("Zarządzanie Filmami");
+        //rozmiarOkna();
+        //przyciskPowrotu();
+        //setTytul("Zarządzanie Filmami");
     }
     public void wypozyczFilm(){
-        rozmiarOkna();
-        przyciskPowrotu();
-        setTytul("Wypożyczanie Filmu");
+        WypozyczFilm wp = new WypozyczFilm();
+        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+        wp.setIconImage(icon.getImage());
+        wp.setContentPane(wp.getPanelWypozyczFilm());
+        wp.setTitle("DVDelfin - Start");
+        wp.setSize(300,500);
+        wp.setVisible(true);
+        wp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wp.setLocationRelativeTo(null);
     }
     public void oddajFilm(){
-        rozmiarOkna();
-        przyciskPowrotu();
-        setTytul("Oddaj Film");
+        //rozmiarOkna();
+        //przyciskPowrotu();
+       // setTytul("Oddaj Film");
     }
     public void ustawienia(){
-        rozmiarOkna();
-        przyciskPowrotu();
-        setTytul("Ustawienia");
+        //rozmiarOkna();
+       // przyciskPowrotu();
+        //setTytul("Ustawienia");
     }
-
+/*
     private void rozmiarOkna(){
         setSize(500,400);
         setTitle("DVDelfin");
@@ -123,27 +101,17 @@ public class Klient extends Uzytkownik {
         lTitle.setBounds(200,20,100,20);
         add(lTitle);
         lTitle.setForeground(tekstLabel);
-    }
+    } */
 
     private void pobierzBazeFilmow() throws FileNotFoundException {
         try{
-            wszystkieFilmy = b.odczytZPliku(2, wszystkieFilmyPath);
+            wszystkieFilmy = b.odczytZPliku(6, wszystkieFilmyPath);
         }catch(Exception e){
             System.out.println(e);
         }
     }
 
-    private static ImageIcon resizeImage(String imagePath, int width, int height) {
-        try {
-            File file = new File(imagePath);
-            BufferedImage originalImage = ImageIO.read(file);
-            Image scaledImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            return new ImageIcon(scaledImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+
 
 
 }

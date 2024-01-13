@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 public class MenuGlowne extends JFrame {
     private JPanel panelGlowny;
@@ -21,12 +22,12 @@ public class MenuGlowne extends JFrame {
         return panelTytulowy;
     }
 
-    public MenuGlowne(){
+    public MenuGlowne(Klient klient){
         buttonWypozyczFilm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //JOptionPane.showMessageDialog(buttonWypozyczFilm,"Wybrałeś wypozyczenie filmu");
-
+                klient.wypozyczFilm();
             }
         });
         buttonOddajFilm.addActionListener(new ActionListener() {
@@ -41,14 +42,7 @@ public class MenuGlowne extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //JOptionPane.showMessageDialog(buttonSprawdzWypozyczoneFilmy,"Wybrałeś sprawdzenie wypozyczonych filmów");
-                klient = new Klient();
-                ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
-                klient.setIconImage(icon.getImage());
-                klient.setBackground(new Color(248, 249, 241));
-                klient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                klient.setVisible(true);
-                klient.setLocationRelativeTo(null);
-                // klient.wyswietlWypozyczoneFilmy(); ??????
+                klient.wyswietlWypozyczoneFilmy();
             }
         });
         buttonUstawienia.addActionListener(new ActionListener() {
@@ -67,7 +61,13 @@ public class MenuGlowne extends JFrame {
         });
 
         buttonWyloguj.addActionListener(e -> Logowanie.closeMenuWindow());
-        buttonWyloguj.addActionListener(e -> Main.main(null));
+        buttonWyloguj.addActionListener(e -> {
+            try {
+                Main.main(null);
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
     }
 }

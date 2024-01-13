@@ -21,6 +21,7 @@ public class Logowanie extends JFrame {
     String nazwaPliku = "user.txt";
     String[][] daneUzytkownika;
     static MenuGlowne m;
+    Klient klient;
 
     public Logowanie(){
         setSize(500,400);
@@ -97,7 +98,9 @@ public class Logowanie extends JFrame {
                     }else if(indexUzytkownika == -1 || !isEqual(haslo,hasloUzytkownika)) {
                         lKomunikat.setText("Niepoprawny login lub hasło");
                     }else{
-                        m = new MenuGlowne();
+                        klient = new Klient(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
+
+                        m = new MenuGlowne(klient);
                         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
                         m.setIconImage(icon.getImage());
                         m.setContentPane(m.getPanelMenuGlownego());
@@ -115,7 +118,13 @@ public class Logowanie extends JFrame {
         });
 
         bPowrot.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
-        bPowrot.addActionListener(e -> Main.main(null));
+        bPowrot.addActionListener(e -> {
+            try {
+                Main.main(null);
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         bZaloguj.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
 
 
