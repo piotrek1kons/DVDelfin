@@ -1,14 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class WyswietlFilm extends JFrame {
 
     Film film;
     String[][] wszystkieFilmy;
     boolean czyMoznaPozyczyc;
+    String plikWypozyczone = "wypozyczone_filmy.txt";
+    Klient klient;
 
-    JButton bPowrot;
-    JLabel lTitle,lRyzyser,lGatunek,lCzasTrwania,lOpis;
+    JButton bPowrot,bWypozycz;
+    JLabel lTitle,lRyzyser,lGatunek,lCzasTrwania,lOpis,lKomunikat;
 
     private JPanel panelWyswietlFilm;
     public JPanel getPanelWyswietlFilm() {
@@ -20,9 +26,10 @@ public class WyswietlFilm extends JFrame {
     Color tloForm = new Color(234, 158, 156);
     Color tloButton = new Color(5, 166, 218);
 
-    public WyswietlFilm(int index, String[][] wszystkieFilmy, boolean czyMoznaPozyczyc){
+    public WyswietlFilm(int index, String[][] wszystkieFilmy, boolean czyMoznaPozyczyc, Klient klient){
         this.wszystkieFilmy = wszystkieFilmy;
         this.czyMoznaPozyczyc = czyMoznaPozyczyc;
+        this.klient = klient;
         film = new Film(wszystkieFilmy[index][0], wszystkieFilmy[index][1], wszystkieFilmy[index][2], wszystkieFilmy[index][3], wszystkieFilmy[index][4], wszystkieFilmy[index][5]);
 
         setSize(500,400);
@@ -68,13 +75,45 @@ public class WyswietlFilm extends JFrame {
         lOpis.setForeground(tekstLabel);
 
         if (czyMoznaPozyczyc){
-            // TODO dodanie nowego filmu do pożyczonych
-            // TODO button który po kliknięciu doda do pożyczonych
-            // TODO zapis do pliku nazwa_użytkownika ; tytuł  + aktualizowanie wektora z pożyczonymi filmami
+
+            bWypozycz = new JButton("Wypożycz");
+            bWypozycz.setBounds(200,230,100,20);
+            add(bWypozycz);
+            bWypozycz.setBackground(tloButton);
+            bWypozycz.setForeground(tekstForm);
+
+            lKomunikat = new JLabel("");
+            lKomunikat.setBounds(130,260,200,20);
+            add(lKomunikat);
+            lKomunikat.setForeground(tekstLabel);
+
+            bWypozycz.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String[] dane = {klient.getLogin(),film.getTytul()};
+                    BazaDanych b = new BazaDanych();
+                    try {
+                        b.zapisDoPliku(dane,plikWypozyczone);
+                        klient.dodajDoPozyczonych(film.getTytul());
+                        setCzyMoznaPozyczyc(false);
+                        lKomunikat.setText("Wypożyczono film");
+                        repaint();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+
+            });
+
+            bPowrot.addActionListener(e -> OknoWejsciowe.closeRejestracjaWindow());
+            bPowrot.addActionListener(e -> Main.main(null));
         }
 
     }
 
-
+    private void setCzyMoznaPozyczyc(boolean cmp){
+        this.czyMoznaPozyczyc = cmp;
+    }
 
 }

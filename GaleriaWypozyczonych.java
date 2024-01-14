@@ -25,7 +25,7 @@ public class GaleriaWypozyczonych extends JFrame {
 
     static WyswietlFilm wyswietlFilm;
 
-    public GaleriaWypozyczonych(Vector<String> wypozyczoneFilmy, String[][] wszystkieFilmy, BazaDanych b){
+    public GaleriaWypozyczonych(Vector<String> wypozyczoneFilmy, String[][] wszystkieFilmy, BazaDanych b, Klient klient){
         setSize(500,400);
         setTitle("DVDelfin");
         setLayout(null);
@@ -60,7 +60,7 @@ public class GaleriaWypozyczonych extends JFrame {
                     @Override
                     public void actionPerformed (ActionEvent e){
                         //JOptionPane.showMessageDialog(imageButton,wypozyczoneFilmy.elementAt(finalI));
-                        wyswietlFilm = new WyswietlFilm(finalI, wszystkieFilmy, false);
+                        wyswietlFilm = new WyswietlFilm(finalI, wszystkieFilmy, false,klient);
                         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
                         wyswietlFilm.setIconImage(icon.getImage());
                         wyswietlFilm.setBackground(new Color(248, 249, 241));

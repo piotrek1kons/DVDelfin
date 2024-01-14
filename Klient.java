@@ -45,7 +45,7 @@ public class Klient extends Uzytkownik {
 
     public void wyswietlWypozyczoneFilmy(){
 
-        GaleriaWypozyczonych galeria = new GaleriaWypozyczonych(wypozyczoneFilmy,wszystkieFilmy,b);
+        GaleriaWypozyczonych galeria = new GaleriaWypozyczonych(wypozyczoneFilmy,wszystkieFilmy,b,this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         galeria.setIconImage(icon.getImage());
         galeria.setContentPane(galeria.getPanelGaleriaWypozyczen());
@@ -91,6 +91,10 @@ public class Klient extends Uzytkownik {
         }catch(Exception e){
             System.out.println(e);
         }
+    }
+
+    public void dodajDoPozyczonych(String tytul){
+        wypozyczoneFilmy.addElement(tytul);
     }
 
 

@@ -13,6 +13,7 @@ public class Ustawienia extends JFrame {
     String imie,nazwisko,email;
     char[] stareHaslo, noweHaslo;
     String[][] daneUzytkownika;
+    String nazwaPliku = "user.txt";
 
     private JPanel panelUstawienia;
     public JPanel getPanelUstawienia() {
@@ -148,7 +149,7 @@ public class Ustawienia extends JFrame {
                         daneUzytkownika[indexUzytkownika][8]= email;
                     }
 
-                    baza.zastapPlik(daneUzytkownika);
+                    baza.zastapPlik(daneUzytkownika,nazwaPliku);
 
                     lKomunikat.setText("Zapisano zmiany");
 
