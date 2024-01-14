@@ -79,30 +79,17 @@ public class Klient extends Uzytkownik {
        // setTytul("Oddaj Film");
     }
     public void ustawienia(){
-        //rozmiarOkna();
-       // przyciskPowrotu();
-        //setTytul("Ustawienia");
+        Ustawienia u = new Ustawienia(this);
+        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+        u.setIconImage(icon.getImage());
+        u.setContentPane(u.getPanelUstawienia());
+        u.setTitle("DVDelfin - Start");
+        u.setSize(300,500);
+        u.setVisible(true);
+        u.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        u.setLocationRelativeTo(null);
     }
-/*
-    private void rozmiarOkna(){
-        setSize(500,400);
-        setTitle("DVDelfin");
-        setLayout(null);
-    }
-    private void przyciskPowrotu(){
-        bPowrot = new JButton("<-");
-        bPowrot.setBounds(10,10,45,20);
-        add(bPowrot);
-        bPowrot.setBackground(tloButton);
-        bPowrot.setForeground(tekstForm);
-    }
-    private void setTytul(String tytul){
-        lTitle = new JLabel(tytul);
-        lTitle.setBounds(200,20,100,20);
-        add(lTitle);
-        lTitle.setForeground(tekstLabel);
-    } */
-
+    
     private void pobierzBazeFilmow() throws FileNotFoundException {
         try{
             wszystkieFilmy = b.odczytZPliku(6, wszystkieFilmyPath);

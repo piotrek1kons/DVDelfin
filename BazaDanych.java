@@ -41,6 +41,21 @@ public class BazaDanych {
         }
     }
 
+    public void zastapPlik(String[][] dane) throws IOException {
+        try (FileWriter file = new FileWriter("user.txt", false);
+             BufferedWriter buffor = new BufferedWriter(file)) {
+             for(int i=0; i < dane.length;i++) {
+                for (int j=0; j < dane[i].length; j++){
+                    buffor.write(dane[i][j]);
+                    if (i < dane.length-1) {
+                        buffor.write(";");
+                    }
+                }
+             }
+            buffor.newLine();
+        }
+    }
+
     public int znajdzIndex(String[][] dane, String nazwa){
         if(dane == null){
             return -1;

@@ -48,22 +48,22 @@ public class WyswietlFilm extends JFrame {
         add(panel);
 
         lRyzyser = new JLabel("Reżyser:\t" + film.getRezyser());
-        lRyzyser.setBounds(200,20,100,20);
+        lRyzyser.setBounds(200,50,100,20);
         add(lRyzyser);
         lRyzyser.setForeground(tekstLabel);
 
         lGatunek = new JLabel("Gatunek:\t" + film.getGatunek());
-        lGatunek.setBounds(200,20,100,20);
+        lGatunek.setBounds(200,80,100,20);
         add(lGatunek);
         lGatunek.setForeground(tekstLabel);
 
         lCzasTrwania = new JLabel("Czas Trwania:\t" + film.getRezyser());
-        lCzasTrwania.setBounds(200,20,100,20);
+        lCzasTrwania.setBounds(200,110,100,20);
         add(lCzasTrwania);
         lCzasTrwania.setForeground(tekstLabel);
 
         lOpis = new JLabel("Opis:\t" + film.getOpis());
-        lOpis.setBounds(200,20,100,20);
+        lOpis.setBounds(200,140,100,100);
         add(lOpis);
         lOpis.setForeground(tekstLabel);
 

@@ -48,7 +48,8 @@ public class MenuGlowne extends JFrame {
         buttonUstawienia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(buttonUstawienia,"Wybrałeś ustawienia");
+                //JOptionPane.showMessageDialog(buttonUstawienia,"Wybrałeś ustawienia");
+                klient.ustawienia();
 
             }
         });
@@ -62,11 +63,7 @@ public class MenuGlowne extends JFrame {
 
         buttonWyloguj.addActionListener(e -> Logowanie.closeMenuWindow());
         buttonWyloguj.addActionListener(e -> {
-            try {
-                Main.main(null);
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
+            Main.main(null);
         });
 
     }
