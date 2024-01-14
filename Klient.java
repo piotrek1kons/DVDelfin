@@ -57,11 +57,6 @@ public class Klient extends Uzytkownik {
 
 
     }
-    public void zarzadzajFilmami(){
-        //rozmiarOkna();
-        //przyciskPowrotu();
-        //setTytul("Zarządzanie Filmami");
-    }
     public void wypozyczFilm(){
         WypozyczFilm wp = new WypozyczFilm();
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
@@ -89,7 +84,7 @@ public class Klient extends Uzytkownik {
         u.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         u.setLocationRelativeTo(null);
     }
-    
+
     private void pobierzBazeFilmow() throws FileNotFoundException {
         try{
             wszystkieFilmy = b.odczytZPliku(6, wszystkieFilmyPath);
