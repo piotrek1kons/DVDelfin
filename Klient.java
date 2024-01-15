@@ -48,9 +48,9 @@ public class Klient extends Uzytkownik {
         GaleriaWypozyczonych galeria = new GaleriaWypozyczonych(wypozyczoneFilmy,wszystkieFilmy,b,this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         galeria.setIconImage(icon.getImage());
-        galeria.setContentPane(galeria.getPanelGaleriaWypozyczen());
+        //galeria.setContentPane(galeria.getPanelGaleriaWypozyczen());
         galeria.setTitle("DVDelfin - Start");
-        galeria.setSize(300,500);
+        galeria.setSize(500,400);
         galeria.setVisible(true);
         galeria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         galeria.setLocationRelativeTo(null);
@@ -71,15 +71,15 @@ public class Klient extends Uzytkownik {
     public void oddajFilm(){
         //rozmiarOkna();
         //przyciskPowrotu();
-       // setTytul("Oddaj Film");
+        // setTytul("Oddaj Film");
     }
     public void ustawienia(){
         Ustawienia u = new Ustawienia(this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         u.setIconImage(icon.getImage());
-        u.setContentPane(u.getPanelUstawienia());
+        //u.setContentPane(u.getPanelUstawienia());
         u.setTitle("DVDelfin - Start");
-        u.setSize(300,500);
+        u.setSize(500,400);
         u.setVisible(true);
         u.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         u.setLocationRelativeTo(null);
