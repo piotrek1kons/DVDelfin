@@ -1,7 +1,10 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -47,12 +50,11 @@ public class WyswietlFilm extends JFrame {
         add(lTitle);
         lTitle.setForeground(tekstLabel);
 
-        JLabel imageLabel = new JLabel();
-        ImageIcon icon = new ImageIcon("/filmy/" + film.getObrazekSRC());
-        imageLabel.setIcon(icon);
-        JPanel panel = new JPanel();
-        panel.add(imageLabel);
-        add(panel);
+
+        ImageIcon icon = resizeImage("filmy/"+wszystkieFilmy[index][1],120,240);
+        JLabel imageLabel = new JLabel(icon);
+        imageLabel.setBounds(200,150,120,240);
+        add(imageLabel);
 
         lRyzyser = new JLabel("Reżyser:\t" + film.getRezyser());
         lRyzyser.setBounds(200,50,100,20);
@@ -114,6 +116,18 @@ public class WyswietlFilm extends JFrame {
 
     private void setCzyMoznaPozyczyc(boolean cmp){
         this.czyMoznaPozyczyc = cmp;
+    }
+
+    private static ImageIcon resizeImage(String imagePath, int width, int height) {
+        try {
+            File file = new File(imagePath);
+            BufferedImage originalImage = ImageIO.read(file);
+            Image scaledImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(scaledImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
