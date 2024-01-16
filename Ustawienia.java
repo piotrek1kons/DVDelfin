@@ -101,7 +101,7 @@ public class Ustawienia extends JFrame {
         tEmail.setBackground(tloForm);
 
         bZapisz = new JButton("Zapisz zmiany");
-        bZapisz.setBounds(200,230,100,20);
+        bZapisz.setBounds(165,230,150,20);
         add(bZapisz);
         bZapisz.setBackground(tloButton);
         bZapisz.setForeground(tekstForm);
@@ -162,8 +162,8 @@ public class Ustawienia extends JFrame {
             }
         });
 
-        bPowrot.addActionListener(e -> OknoWejsciowe.closeRejestracjaWindow());
-        bPowrot.addActionListener(e -> Main.main(null));
+        bPowrot.addActionListener(e -> Klient.closeUstawieniaWindow()); // tu powinien zmienic visible
+        //bPowrot.addActionListener(e -> Main.main(null)); - Tu powinien powrocic do menu glownego
 
 
     }
