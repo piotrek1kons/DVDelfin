@@ -31,7 +31,7 @@ public class BazaDanych {
     public void zapisDoPliku(String[] dane, String path) throws IOException {
         try (FileWriter file = new FileWriter(path, true);
              BufferedWriter buffor = new BufferedWriter(file)) {
-                for(int i=0; i < dane.length;i++) {
+            for(int i=0; i < dane.length;i++) {
                 buffor.write(dane[i]);
                 if (i < dane.length-1) {
                     buffor.write(";");
@@ -44,7 +44,7 @@ public class BazaDanych {
     public void zastapPlik(String[][] dane, String path) throws IOException {
         try (FileWriter file = new FileWriter(path, false);
              BufferedWriter buffor = new BufferedWriter(file)) {
-             for(int i=0; i < dane.length;i++) {
+            for(int i=0; i < dane.length;i++) {
                 for (int j=0; j < dane[i].length; j++){
                     buffor.write(dane[i][j]);
                     if (j < dane[i].length-1) {
@@ -54,7 +54,7 @@ public class BazaDanych {
                     }
                 }
 
-             }
+            }
         }
     }
 
