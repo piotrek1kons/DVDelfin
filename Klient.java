@@ -17,13 +17,15 @@ public class Klient extends Uzytkownik {
     private String pozyczoneFilmyPath = "wypozyczone_filmy.txt";
     private String wszystkieFilmyPath = "filmy.txt";  // login ; tytuł
     BazaDanych b;
-
+    static GaleriaWypozyczonych galeria;
+    static Ustawienia u;
     public Klient(){
         super();
     }
     public Klient(String login,char[] haslo,String imie,String nazwisko,String dzien,String miesiac,String rok, String plec,String email) throws FileNotFoundException {
         super(login,haslo,imie,nazwisko,dzien,miesiac,rok,plec,email);
         this.wypozyczoneFilmy = new Vector<String>();
+
         String[][] filmy;
 
         try{
@@ -31,6 +33,7 @@ public class Klient extends Uzytkownik {
             filmy = b.odczytZPliku(2, pozyczoneFilmyPath);
             for (int i=0; i<filmy.length; i++){
                 if (filmy[i][0].equals(login)){
+                    System.out.println(filmy[i][1]);
                     wypozyczoneFilmy.addElement(filmy[i][1]);
                 }
             }
@@ -45,13 +48,14 @@ public class Klient extends Uzytkownik {
 
     public void wyswietlWypozyczoneFilmy(){
 
-        GaleriaWypozyczonych galeria = new GaleriaWypozyczonych(wypozyczoneFilmy,wszystkieFilmy,b,this);
+        galeria = new GaleriaWypozyczonych(wypozyczoneFilmy,wszystkieFilmy,b,this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         galeria.setIconImage(icon.getImage());
         //galeria.setContentPane(galeria.getPanelGaleriaWypozyczen());
         galeria.setTitle("DVDelfin - Start");
-        galeria.setSize(500,400);
+        galeria.setSize(400, getMaximumSize().height);
         galeria.setVisible(true);
+        Logowanie.hideMenuWindow();
         galeria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         galeria.setLocationRelativeTo(null);
 
@@ -74,20 +78,30 @@ public class Klient extends Uzytkownik {
         // setTytul("Oddaj Film");
     }
     public void ustawienia(){
-        Ustawienia u = new Ustawienia(this);
+        u = new Ustawienia(this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         u.setIconImage(icon.getImage());
         //u.setContentPane(u.getPanelUstawienia());
         u.setTitle("DVDelfin - Start");
         u.setSize(500,400);
         u.setVisible(true);
+        Logowanie.hideMenuWindow();
         u.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         u.setLocationRelativeTo(null);
     }
 
+    public static void closeUstawieniaWindow(){
+        u.dispose();
+        Logowanie.showMenuWindow();
+    }
+    public static void closeWypozyczoneFilmyWindow(){
+        galeria.dispose();
+        Logowanie.showMenuWindow();
+    }
     private void pobierzBazeFilmow() throws FileNotFoundException {
         try{
             wszystkieFilmy = b.odczytZPliku(6, wszystkieFilmyPath);
+
         }catch(Exception e){
             System.out.println(e);
         }
