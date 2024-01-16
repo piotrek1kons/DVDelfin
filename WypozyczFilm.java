@@ -69,7 +69,7 @@ public class WypozyczFilm extends JFrame{
                     //JOptionPane.showMessageDialog(imageButton,wypozyczoneFilmy.elementAt(finalI));
 
                     boolean czyWypozyczony = (finalIndex == -1 ? true : false);
-                    wyswietlFilm = new WyswietlFilm(finalI, wszystkieFilmy, czyWypozyczony,klient);
+                    wyswietlFilm = new WyswietlFilm(finalI, wszystkieFilmy, czyWypozyczony,klient, "wypozycz");
                     ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
                     wyswietlFilm.setIconImage(icon.getImage());
                     wyswietlFilm.setBackground(new Color(248, 249, 241));
@@ -79,6 +79,9 @@ public class WypozyczFilm extends JFrame{
                 }
             });
             galleryPanel.add(imageButton);
+            bPowrot.addActionListener(e -> Klient.hideWypozyczFilmWindow());
+            bPowrot.addActionListener(e -> Logowanie.showMenuWindow());
+
         }
 
         // scrollowanie
@@ -106,6 +109,8 @@ public class WypozyczFilm extends JFrame{
 
     public static void closeWyswietlFilmWindow(){
         wyswietlFilm.dispose();
+        Klient.showWypozyczFilmWindow();
     }
+    public static void showWyswietlFilmWindow(){ wyswietlFilm.setVisible(true);}
 
 }

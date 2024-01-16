@@ -1,1 +1,2 @@
 kk;l;k;k;1;1;1906;Kobieta;k@k.l
+jan;haslo;jan;kowalski;1;1;2000;Mężczyzna;jan@kow.com

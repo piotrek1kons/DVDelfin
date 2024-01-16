@@ -76,7 +76,7 @@ public class GaleriaWypozyczonych extends JFrame {
                     @Override
                     public void actionPerformed (ActionEvent e){
                         //JOptionPane.showMessageDialog(imageButton,wypozyczoneFilmy.elementAt(finalI));
-                        wyswietlFilm = new WyswietlFilm(finalI, wszystkieFilmy, false,klient);
+                        wyswietlFilm = new WyswietlFilm(finalI, wszystkieFilmy, false,klient,"galeria");
                         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
                         wyswietlFilm.setIconImage(icon.getImage());
                         wyswietlFilm.setBackground(new Color(248, 249, 241));

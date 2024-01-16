@@ -15,6 +15,7 @@ public class WyswietlFilm extends JFrame {
     boolean czyMoznaPozyczyc;
     String plikWypozyczone = "wypozyczone_filmy.txt";
     Klient klient;
+    String pochodzenie;
 
     JButton bPowrot,bWypozycz;
     JLabel lTitle,lRyzyser,lGatunek,lCzasTrwania,lOpis,lKomunikat;
@@ -29,7 +30,15 @@ public class WyswietlFilm extends JFrame {
     Color tloForm = new Color(234, 158, 156);
     Color tloButton = new Color(5, 166, 218);
 
-    public WyswietlFilm(int index, String[][] wszystkieFilmy, boolean czyMoznaPozyczyc, Klient klient){
+    public WyswietlFilm(int index, String[][] wszystkieFilmy, boolean czyMoznaPozyczyc, Klient klient, String pochodzenie){
+        this.pochodzenie = pochodzenie;
+
+        if(this.pochodzenie == "wypozycz"){
+            Klient.hideWypozyczFilmWindow();
+        }else{
+            Klient.hideWypozyczoneFilmyWindow();
+        }
+
         this.wszystkieFilmy = wszystkieFilmy;
         this.czyMoznaPozyczyc = czyMoznaPozyczyc;
         this.klient = klient;
@@ -108,9 +117,13 @@ public class WyswietlFilm extends JFrame {
 
             });
 
-            bPowrot.addActionListener(e -> GaleriaWypozyczonych.closeWyswietlFilmWindow());
-            bPowrot.addActionListener(e -> WypozyczFilm.closeWyswietlFilmWindow());
-            bPowrot.addActionListener(e -> Main.main(null));
+            if(pochodzenie == "galeria"){
+                bPowrot.addActionListener(e -> GaleriaWypozyczonych.closeWyswietlFilmWindow());
+                bPowrot.addActionListener(e -> Klient.showWypozyczoneFilmyWindow());
+            }else{
+                bPowrot.addActionListener(e -> WypozyczFilm.closeWyswietlFilmWindow());
+                bPowrot.addActionListener(e -> Klient.showWypozyczFilmWindow());
+            }
         }
 
     }

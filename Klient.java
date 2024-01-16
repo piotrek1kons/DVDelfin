@@ -100,6 +100,14 @@ public class Klient extends Uzytkownik {
         galeria.dispose();
         Logowanie.showMenuWindow();
     }
+    public static void closeWypozyczFilmWindow(){
+        wp.dispose();
+        Logowanie.showMenuWindow();
+    }
+    public static void hideWypozyczoneFilmyWindow(){ galeria.setVisible(false);}
+    public static void showWypozyczoneFilmyWindow(){ galeria.setVisible(true);}
+    public static void hideWypozyczFilmWindow(){ wp.setVisible(false);}
+    public static void showWypozyczFilmWindow(){ wp.setVisible(true);}
     private void pobierzBazeFilmow() throws FileNotFoundException {
         try{
             wszystkieFilmy = b.odczytZPliku(6, wszystkieFilmyPath);
