@@ -24,7 +24,7 @@ public class Logowanie extends JFrame {
     Klient klient;
 
     public Logowanie(){
-        setSize(500,400);
+        setSize(300,250);
         setTitle("DVDelfin");
         setLayout(null);
 
@@ -35,40 +35,40 @@ public class Logowanie extends JFrame {
         bPowrot.setForeground(tekstForm);
 
         lTitle = new JLabel("LOGOWANIE");
-        lTitle.setBounds(200,20,100,20);
+        lTitle.setBounds(100,50,100,20);
         add(lTitle);
         lTitle.setForeground(tekstLabel);
 
         lLogin = new JLabel("Login: ");
-        lLogin.setBounds(130,50,100,20);
+        lLogin.setBounds(60,80,70,20);
         add(lLogin);
         lLogin.setForeground(tekstLabel);
 
         tLogin = new JTextField("");
-        tLogin.setBounds(230,50,100,20);
+        tLogin.setBounds(130,80,100,20);
         add(tLogin);
         tLogin.setForeground(tekstForm);
         tLogin.setBackground(tloForm);
 
         lHaslo = new JLabel("Hasło: ");
-        lHaslo.setBounds(130,75,100,20);
+        lHaslo.setBounds(60,115,70,20);
         add(lHaslo);
         lHaslo.setForeground(tekstLabel);
 
         pHaslo = new JPasswordField("");
-        pHaslo.setBounds(230,75,100,20);
+        pHaslo.setBounds(130,115,100,20);
         add(pHaslo);
         pHaslo.setForeground(tekstForm);
         pHaslo.setBackground(tloForm);
 
         bZaloguj = new JButton("Zaloguj");
-        bZaloguj.setBounds(200,300,100,20);
+        bZaloguj.setBounds(100,150,100,20);
         add(bZaloguj);
         bZaloguj.setBackground(tloButton);
         bZaloguj.setForeground(tekstForm);
 
         lKomunikat = new JLabel("");
-        lKomunikat.setBounds(130,325,200,20);
+        lKomunikat.setBounds(30,55,200,20);
         add(lKomunikat);
         lKomunikat.setForeground(tekstLabel);
 
@@ -119,17 +119,15 @@ public class Logowanie extends JFrame {
 
         bPowrot.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
         bPowrot.addActionListener(e -> {
-            try {
-                Main.main(null);
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
+            Main.main(null);
         });
         bZaloguj.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
 
 
     }
 
+    public static void hideMenuWindow(){ m.setVisible(false);}
+    public static void showMenuWindow(){ m.setVisible(true);}
     public static void closeMenuWindow() {
         m.dispose();
     }
