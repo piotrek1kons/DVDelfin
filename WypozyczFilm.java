@@ -35,7 +35,6 @@ public class WypozyczFilm extends JFrame{
     private JButton zywotBrianaButton;
     private JLabel panelTytulowy;
 
-
     public JPanel getPanelWypozyczFilm() {
         return panelWypozyczFilm;
     };
@@ -44,6 +43,8 @@ public class WypozyczFilm extends JFrame{
     }
 
     public WypozyczFilm(){
+
+
         asterixMisjaKleopatraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
@@ -220,7 +221,7 @@ public class WypozyczFilm extends JFrame{
             }
         });
 
-       wGlowieSieNieButton.addActionListener(new ActionListener() {
+        wGlowieSieNieButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
                 JOptionPane.showMessageDialog(wGlowieSieNieButton,"Wybrałeś W Głowie Się Nie Mieści");
@@ -265,4 +266,3 @@ public class WypozyczFilm extends JFrame{
     }
 
 }
-
