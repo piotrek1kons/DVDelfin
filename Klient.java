@@ -19,6 +19,7 @@ public class Klient extends Uzytkownik {
     BazaDanych b;
     static GaleriaWypozyczonych galeria;
     static Ustawienia u;
+    static WypozyczFilm wp;
     public Klient(){
         super();
     }
@@ -62,13 +63,14 @@ public class Klient extends Uzytkownik {
 
     }
     public void wypozyczFilm(){
-        WypozyczFilm wp = new WypozyczFilm();
+        wp = new WypozyczFilm(wypozyczoneFilmy,wszystkieFilmy,b,this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
         wp.setIconImage(icon.getImage());
-        wp.setContentPane(wp.getPanelWypozyczFilm());
+        //wp.setContentPane(wp.getPanelWypozyczFilm());
         wp.setTitle("DVDelfin - Start");
-        wp.setSize(300,500);
+        wp.setSize(400,getMaximumSize().height);
         wp.setVisible(true);
+        Logowanie.hideMenuWindow();
         wp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wp.setLocationRelativeTo(null);
     }

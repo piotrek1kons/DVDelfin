@@ -46,46 +46,46 @@ public class WyswietlFilm extends JFrame {
         bPowrot.setForeground(tekstForm);
 
         lTitle = new JLabel(film.getTytul());
-        lTitle.setBounds(200,20,100,20);
+        lTitle.setBounds(200,60,300,20);
         add(lTitle);
         lTitle.setForeground(tekstLabel);
 
 
         ImageIcon icon = resizeImage("filmy/"+wszystkieFilmy[index][1],120,240);
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(200,150,120,240);
+        imageLabel.setBounds(10,60,180,240);
         add(imageLabel);
 
         lRyzyser = new JLabel("Reżyser:\t" + film.getRezyser());
-        lRyzyser.setBounds(200,50,100,20);
+        lRyzyser.setBounds(200,90,300,20);
         add(lRyzyser);
         lRyzyser.setForeground(tekstLabel);
 
         lGatunek = new JLabel("Gatunek:\t" + film.getGatunek());
-        lGatunek.setBounds(200,80,100,20);
+        lGatunek.setBounds(200,120,300,20);
         add(lGatunek);
         lGatunek.setForeground(tekstLabel);
 
-        lCzasTrwania = new JLabel("Czas Trwania:\t" + film.getRezyser());
-        lCzasTrwania.setBounds(200,110,100,20);
+        lCzasTrwania = new JLabel("Czas Trwania:\t" + film.getCzasTrwania());
+        lCzasTrwania.setBounds(200,150,300,20);
         add(lCzasTrwania);
         lCzasTrwania.setForeground(tekstLabel);
 
-        lOpis = new JLabel("Opis:\t" + film.getOpis());
-        lOpis.setBounds(200,140,100,100);
+        lOpis = new JLabel("<html>Opis:\t" + film.getOpis() + "</html>");
+        lOpis.setBounds(200,180,250,150);
         add(lOpis);
         lOpis.setForeground(tekstLabel);
 
         if (czyMoznaPozyczyc){
 
             bWypozycz = new JButton("Wypożycz");
-            bWypozycz.setBounds(200,230,100,20);
+            bWypozycz.setBounds(65,10,100,20);
             add(bWypozycz);
             bWypozycz.setBackground(tloButton);
             bWypozycz.setForeground(tekstForm);
 
             lKomunikat = new JLabel("");
-            lKomunikat.setBounds(130,260,200,20);
+            lKomunikat.setBounds(175,10,200,20);
             add(lKomunikat);
             lKomunikat.setForeground(tekstLabel);
 
@@ -108,7 +108,8 @@ public class WyswietlFilm extends JFrame {
 
             });
 
-            bPowrot.addActionListener(e -> OknoWejsciowe.closeRejestracjaWindow());
+            bPowrot.addActionListener(e -> GaleriaWypozyczonych.closeWyswietlFilmWindow());
+            bPowrot.addActionListener(e -> WypozyczFilm.closeWyswietlFilmWindow());
             bPowrot.addActionListener(e -> Main.main(null));
         }
 

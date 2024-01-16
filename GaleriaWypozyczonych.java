@@ -117,4 +117,8 @@ public class GaleriaWypozyczonych extends JFrame {
         }
     }
 
+    public static void closeWyswietlFilmWindow(){
+        wyswietlFilm.dispose();
+    }
+
 }

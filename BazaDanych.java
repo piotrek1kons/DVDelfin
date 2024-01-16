@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class BazaDanych {
     public String[][] odczytZPliku(int rozmiar, String nazwaPliku) throws FileNotFoundException {
@@ -65,6 +66,21 @@ public class BazaDanych {
             int rozmiar = dane.length;
             for (int i=0; i<rozmiar; i++){
                 if (dane[i][0].equals(nazwa)) return i;
+            }
+
+        }
+
+
+        return -1;
+    }
+
+    public int znajdzIndex(Vector<String> dane, String nazwa){
+        if(dane == null){
+            return -1;
+        }else{
+            int rozmiar = dane.size();
+            for (int i=0; i<rozmiar; i++){
+                if (dane.elementAt(i).equals(nazwa)) return i;
             }
 
         }
