@@ -31,13 +31,13 @@ public class MenuGlowne extends JFrame {
             }
         });
         buttonOddajFilm.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //JOptionPane.showMessageDialog(buttonOddajFilm,"Wybrałeś oddanie filmu");
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //JOptionPane.showMessageDialog(buttonOddajFilm,"Wybrałeś oddanie filmu");
 
 
-                }
-            });
+            }
+        });
         buttonSprawdzWypozyczoneFilmy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
