@@ -35,7 +35,7 @@ public class WypozyczFilm extends JFrame{
 
         int rozmiar = wszystkieFilmy.length;
 
-        JPanel galleryPanel = new JPanel(new GridLayout(0, 2, 10, 10));
+        JPanel galleryPanel = new JPanel(new GridLayout(0, 5, 10, 10));
         bPowrot = new JButton("<-");
         //bPowrot.setBounds(10,10,45,20);
         galleryPanel.add(bPowrot);

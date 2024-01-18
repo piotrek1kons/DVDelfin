@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Vector;
 
 public class WyswietlFilm extends JFrame {
 
@@ -85,7 +86,10 @@ public class WyswietlFilm extends JFrame {
         add(lOpis);
         lOpis.setForeground(tekstLabel);
 
-        if (czyMoznaPozyczyc){
+
+        if (czyMoznaPozyczyc){  // TODO else - przycisk do oddania
+
+            Vector<String> pozyczone = klient.getWypozyczoneFilmy();
 
             bWypozycz = new JButton("Wypożycz");
             bWypozycz.setBounds(65,10,100,20);
@@ -103,27 +107,76 @@ public class WyswietlFilm extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     String[] dane = {klient.getLogin(),film.getTytul()};
                     BazaDanych b = new BazaDanych();
-                    try {
-                        b.zapisDoPliku(dane,plikWypozyczone);
-                        klient.dodajDoPozyczonych(film.getTytul());
-                        setCzyMoznaPozyczyc(false);
-                        lKomunikat.setText("Wypożyczono film");
-                        repaint();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
+                    int indexWyp = b.znajdzIndex(pozyczone,wszystkieFilmy[index][0]);
 
+                    if (indexWyp == -1){
+                        try {
+                            b.zapisDoPliku(dane,plikWypozyczone);
+                            klient.dodajDoPozyczonych(film.getTytul());
+                            setCzyMoznaPozyczyc(false);
+                            lKomunikat.setText("Wypożyczono film");
+                            repaint();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }else{
+                        lKomunikat.setText("Film jest już pożyczony");
+                    }
+
+                }
 
             });
 
-            if(pochodzenie == "galeria"){
-                bPowrot.addActionListener(e -> GaleriaWypozyczonych.closeWyswietlFilmWindow());
-                bPowrot.addActionListener(e -> Klient.showWypozyczoneFilmyWindow());
-            }else{
-                bPowrot.addActionListener(e -> WypozyczFilm.closeWyswietlFilmWindow());
-                bPowrot.addActionListener(e -> Klient.showWypozyczFilmWindow());
-            }
+
+        }else {
+
+            Vector<String> pozyczone = klient.getWypozyczoneFilmy();
+
+            bWypozycz = new JButton("Oddaj");
+            bWypozycz.setBounds(65,10,100,20);
+            add(bWypozycz);
+            bWypozycz.setBackground(tloButton);
+            bWypozycz.setForeground(tekstForm);
+
+            lKomunikat = new JLabel("");
+            lKomunikat.setBounds(175,10,200,20);
+            add(lKomunikat);
+            lKomunikat.setForeground(tekstLabel);
+
+            bWypozycz.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String[] dane = {klient.getLogin(),film.getTytul()};
+                    BazaDanych b = new BazaDanych();
+                    int indexWyp = b.znajdzIndex(pozyczone,wszystkieFilmy[index][0]);
+
+                    if (indexWyp != -1){
+                        try {
+                            klient.usunZPozyczonych(film.getTytul());
+                            //b.zapisDoPliku(dane,plikWypozyczone);
+                            //b.zastapPlik();
+                            String[][] wszystkiePozyczenia = b.odczytZPliku(2,"wypozyczone_filmy.txt");
+                            int ind = b.znajdzIndex(wszystkiePozyczenia,wszystkieFilmy[index][0]);
+                            // TODO nie chce mi sie
+                            setCzyMoznaPozyczyc(true);
+                            lKomunikat.setText("Oddano film");
+                            repaint();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }else{
+                        lKomunikat.setText("Film jest już pożyczony");
+                    }
+
+                }
+
+            });
+
+        }
+        if(pochodzenie == "galeria"){
+            bPowrot.addActionListener(e -> GaleriaWypozyczonych.closeWyswietlFilmWindow());
+        }else{
+            bPowrot.addActionListener(e -> WypozyczFilm.closeWyswietlFilmWindow());
         }
 
     }

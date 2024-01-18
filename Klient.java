@@ -54,7 +54,7 @@ public class Klient extends Uzytkownik {
         galeria.setIconImage(icon.getImage());
         //galeria.setContentPane(galeria.getPanelGaleriaWypozyczen());
         galeria.setTitle("DVDelfin - Start");
-        galeria.setSize(400, getMaximumSize().height);
+        galeria.setSize(1400, getMaximumSize().height);
         galeria.setVisible(true);
         Logowanie.hideMenuWindow();
         galeria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +68,7 @@ public class Klient extends Uzytkownik {
         wp.setIconImage(icon.getImage());
         //wp.setContentPane(wp.getPanelWypozyczFilm());
         wp.setTitle("DVDelfin - Start");
-        wp.setSize(400,getMaximumSize().height);
+        wp.setSize(1400,getMaximumSize().height);
         wp.setVisible(true);
         Logowanie.hideMenuWindow();
         wp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,7 +120,13 @@ public class Klient extends Uzytkownik {
     public void dodajDoPozyczonych(String tytul){
         wypozyczoneFilmy.addElement(tytul);
     }
+    public void usunZPozyczonych(String tytul){
+        wypozyczoneFilmy.removeElement(tytul);
+    }
 
+    public Vector<String> getWypozyczoneFilmy(){
+        return wypozyczoneFilmy;
+    }
 
 
 

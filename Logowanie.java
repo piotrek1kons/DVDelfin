@@ -68,7 +68,7 @@ public class Logowanie extends JFrame {
         bZaloguj.setForeground(tekstForm);
 
         lKomunikat = new JLabel("");
-        lKomunikat.setBounds(30,55,200,20);
+        lKomunikat.setBounds(60,170,200,20);
         add(lKomunikat);
         lKomunikat.setForeground(tekstLabel);
 
@@ -89,15 +89,23 @@ public class Logowanie extends JFrame {
                     // wyszukiwanie uzytkownika
                     daneUzytkownika = b.odczytZPliku(9,nazwaPliku);
                     indexUzytkownika = b.znajdzIndex(daneUzytkownika,login);
-                    hasloUzytkownika = daneUzytkownika[indexUzytkownika][1].toCharArray();
+
+                    if (indexUzytkownika != -1){
+                        hasloUzytkownika = daneUzytkownika[indexUzytkownika][1].toCharArray();
+                    }else{
+                        hasloUzytkownika = null;
+                    }
+
 
                     // logowanie
 
                     if(login.isEmpty()){
                         lKomunikat.setText("Pole Login jest puste");
                     }else if(indexUzytkownika == -1 || !isEqual(haslo,hasloUzytkownika)) {
-                        lKomunikat.setText("Niepoprawny login lub hasło");
+                            lKomunikat.setText("Niepoprawny login lub hasło");
+
                     }else{
+                        bZaloguj.addActionListener(ex -> OknoWejsciowe.closeLogowanieWindow());
                         klient = new Klient(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
 
                         m = new MenuGlowne(klient);
@@ -121,7 +129,7 @@ public class Logowanie extends JFrame {
         bPowrot.addActionListener(e -> {
             Main.main(null);
         });
-        bZaloguj.addActionListener(e -> OknoWejsciowe.closeLogowanieWindow());
+
 
 
     }

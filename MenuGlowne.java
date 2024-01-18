@@ -53,13 +53,7 @@ public class MenuGlowne extends JFrame {
 
             }
         });
-        buttonWyloguj.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(buttonWyloguj,"Wybrałeś wylogowanie");
 
-            }
-        });
 
         buttonWyloguj.addActionListener(e -> Logowanie.closeMenuWindow());
         buttonWyloguj.addActionListener(e -> {

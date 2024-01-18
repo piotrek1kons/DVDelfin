@@ -41,22 +41,24 @@ public class GaleriaWypozyczonych extends JFrame {
         add(lTitle);
         lTitle.setForeground(tekstLabel);
 */
-        if (!wypozyczoneFilmy.isEmpty()){
+        JPanel galleryPanel = new JPanel(new GridLayout(10, 3, 10, 10));
+        bPowrot = new JButton("<-");
+        //bPowrot.setBounds(10,10,45,20);
+        galleryPanel.add(bPowrot);
+        bPowrot.setBackground(tloButton);
+        bPowrot.setForeground(tekstForm);
 
+        lTitle = new JLabel("Wypożyczone Filmy");
+        //lTitle.setBounds(200,20,100,20);
+        lTitle.setHorizontalAlignment(JLabel.CENTER);
+        galleryPanel.add(lTitle);
+        lTitle.setForeground(tekstLabel);
+
+
+        if (!wypozyczoneFilmy.isEmpty()){
+            galleryPanel.setLayout(new GridLayout(0, 5, 10, 10));
             int rozmiar = wypozyczoneFilmy.size();
 
-            JPanel galleryPanel = new JPanel(new GridLayout(0, 2, 10, 10));
-            bPowrot = new JButton("<-");
-            //bPowrot.setBounds(10,10,45,20);
-            galleryPanel.add(bPowrot);
-            bPowrot.setBackground(tloButton);
-            bPowrot.setForeground(tekstForm);
-
-            lTitle = new JLabel("Wypożyczone Filmy");
-            //lTitle.setBounds(200,20,100,20);
-            lTitle.setHorizontalAlignment(JLabel.CENTER);
-            galleryPanel.add(lTitle);
-            lTitle.setForeground(tekstLabel);
             int index;
 
             for (int i = 0; i<rozmiar; i++){
@@ -88,20 +90,21 @@ public class GaleriaWypozyczonych extends JFrame {
                 galleryPanel.add(imageButton);
             }
 
-            // scrollowanie
-            JScrollPane scrollPane = new JScrollPane(galleryPanel);
-            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-            add(scrollPane);
 
         }else{
             lPustaTablica = new JLabel("Brak wypożyczonych filmów");
-            lPustaTablica.setBounds(130,150,100,20);
-            add(lPustaTablica);
+            //lPustaTablica.setBounds(130,150,100,20);
+
+            lPustaTablica.setHorizontalAlignment(JLabel.CENTER);
+            galleryPanel.add(lPustaTablica);
             lPustaTablica.setForeground(tekstLabel);
         }
         bPowrot.addActionListener(e -> Klient.closeWypozyczoneFilmyWindow());
+        add(galleryPanel);
+        JScrollPane scrollPane = new JScrollPane(galleryPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
+        add(scrollPane);
     }
 
 
@@ -119,6 +122,8 @@ public class GaleriaWypozyczonych extends JFrame {
 
     public static void closeWyswietlFilmWindow(){
         wyswietlFilm.dispose();
+        Klient.showWypozyczoneFilmyWindow();
+
     }
 
 }
