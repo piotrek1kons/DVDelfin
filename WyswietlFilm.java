@@ -87,7 +87,7 @@ public class WyswietlFilm extends JFrame {
         lOpis.setForeground(tekstLabel);
 
 
-        if (czyMoznaPozyczyc){  // TODO else - przycisk do oddania
+        if (czyMoznaPozyczyc){
 
             Vector<String> pozyczone = klient.getWypozyczoneFilmy();
 
@@ -152,20 +152,27 @@ public class WyswietlFilm extends JFrame {
 
                     if (indexWyp != -1){
                         try {
-                            klient.usunZPozyczonych(film.getTytul());
-                            //b.zapisDoPliku(dane,plikWypozyczone);
-                            //b.zastapPlik();
-                            String[][] wszystkiePozyczenia = b.odczytZPliku(2,"wypozyczone_filmy.txt");
-                            int ind = b.znajdzIndex(wszystkiePozyczenia,wszystkieFilmy[index][0]);
-                            // TODO nie chce mi sie
-                            setCzyMoznaPozyczyc(true);
-                            lKomunikat.setText("Oddano film");
-                            repaint();
+                            String[][] wszystkiePozyczenia = b.odczytZPliku(2,plikWypozyczone);
+                            int ind = b.znajdzIndex(wszystkiePozyczenia,pozyczone.elementAt(indexWyp),1);
+
+                            if (ind != -1){
+                                try {
+                                    wszystkiePozyczenia = b.usunZTablicy(wszystkiePozyczenia, ind);
+                                    b.zastapPlik(wszystkiePozyczenia, plikWypozyczone);
+                                    klient.usunZPozyczonych(film.getTytul());
+
+                                    setCzyMoznaPozyczyc(true);
+                                    lKomunikat.setText("Oddano film");
+                                    repaint();
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
                     }else{
-                        lKomunikat.setText("Film jest już pożyczony");
+                        lKomunikat.setText("Film jest już oddany");
                     }
 
                 }

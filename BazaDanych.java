@@ -74,6 +74,21 @@ public class BazaDanych {
         return -1;
     }
 
+    public int znajdzIndex(String[][] dane, String nazwa, int pozycja){
+        if(dane == null){
+            return -1;
+        }else{
+            int rozmiar = dane.length;
+            for (int i=0; i<rozmiar; i++){
+                if (dane[i][pozycja].equals(nazwa)) return i;
+            }
+
+        }
+
+
+        return -1;
+    }
+
     public int znajdzIndex(Vector<String> dane, String nazwa){
         if(dane == null){
             return -1;
@@ -87,5 +102,23 @@ public class BazaDanych {
 
 
         return -1;
+    }
+
+    public String[][] usunZTablicy(String[][] dane, int index){
+        String[][] nowa = new String[dane.length-1][dane[0].length];
+
+        for (int i=0; i<index; i++){
+            for (int j=0; j<dane[i].length; j++){
+                nowa[i][j] = dane[i][j];
+            }
+        }
+
+        for (int i=index; i < dane.length-1; i++){
+            for (int j=0; j<dane[0].length; j++){
+                nowa[i][j] = dane[i+1][j];
+            }
+        }
+
+        return nowa;
     }
 }
