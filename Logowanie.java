@@ -21,7 +21,9 @@ public class Logowanie extends JFrame {
     String nazwaPliku = "user.txt";
     String[][] daneUzytkownika;
     static MenuGlowne m;
+    static MenuAdmin a;
     Klient klient;
+    Admin admin;
 
     public Logowanie(){
         setSize(300,250);
@@ -105,19 +107,34 @@ public class Logowanie extends JFrame {
                             lKomunikat.setText("Niepoprawny login lub hasło");
 
                     }else{
-                        bZaloguj.addActionListener(ex -> OknoWejsciowe.closeLogowanieWindow());
-                        klient = new Klient(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
+                        if(daneUzytkownika[indexUzytkownika][0].equals("admin")){
+                            admin = new Admin(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
 
-                        m = new MenuGlowne(klient);
-                        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
-                        m.setIconImage(icon.getImage());
-                        m.setContentPane(m.getPanelMenuGlownego());
-                        m.setTitle("DVDelfin - Start");
-                        m.setSize(300,600);
-                        m.setVisible(true);
-                        m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        m.setLocationRelativeTo(null);
-                        lKomunikat.setText("Dane poprawne. Następuje logowanie");
+                            a = new MenuAdmin(admin);
+                            ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+                            a.setIconImage(icon.getImage());
+                            a.setContentPane(a.getPanelMenuAdmin());
+                            a.setTitle("DVDelfin - Start");
+                            a.setSize(300,600);
+                            a.setVisible(true);
+                            a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            a.setLocationRelativeTo(null);
+                        }else{
+                            klient = new Klient(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
+
+                            m = new MenuGlowne(klient);
+                            ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+                            m.setIconImage(icon.getImage());
+                            m.setContentPane(m.getPanelMenuGlownego());
+                            m.setTitle("DVDelfin - Start");
+                            m.setSize(300,600);
+                            m.setVisible(true);
+                            m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            m.setLocationRelativeTo(null);
+
+                        }
+
+                        OknoWejsciowe.closeLogowanieWindow();
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
