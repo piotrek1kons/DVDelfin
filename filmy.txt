@@ -3,7 +3,7 @@ Avatar Istota Wody;avatar_istota_wody.jpg;James Cameron;Sci-Fi;3h 12min;Pandorę
 Avatar;avatar.jpg;James Cameron;Sci-Fi;2h 42min;Jake, sparaliżowany były komandos, zostaje wysłany na planetę Pandora, gdzie zaprzyjaźnia się z lokalną społecznością i postanawia jej pomóc.
 Barbie;barbie.png;Greta Gerwig;Dramat;1h 54min;Barbie, która żyje w idealnym bajkowym świecie przechodzi kryzys egzystencjalny.
 Charlie i Fabryka Czekolady;charlie_i_fabryka_czekolady.jpg;Tim Burton;Familijny;1h 55min;Ubogi Charlie Bucket znajduje jeden z pięciu złotych biletów, który umożliwia mu zwiedzenie ogromnej fabryki czekolady.
-Chłopi;chlopi.jpg;DK Welchman, Hugh Welchman;Dramat;1h 56min;Na tle zmieniających się pór roku i sezonowych prac polowych rozgrywają się losy rodziny Borynów i pięknej, tajemniczej Jagny. 
+Chłopi;chlopi.jpg;DK Welchman, Hugh Welchman;Dramat;1h 56min;Na tle zmieniających się pór roku i sezonowych prac polowych rozgrywają się losy rodziny Borynów i pięknej, tajemniczej Jagny.
 Coco;coco.jpg;Lee Unkrich, Adrian Molina;Przygodowy;1h 45min;Dwunastoletni meksykański chłopiec imieniem Miguel usiłuje zgłębić tajemnice rodzinnej legendy.
 Cruella;cruella.jpg;Craig Gillespie;Komedia kryminalna;2h 14min;Historia o buntowniczych początkach jednej z najbardziej znanych i genialnych postaci, legendarnej Cruelli de Mon.
 Encanto;encanto.jpg;Jared Bush, Byron Howard;Przygodowy;1h 39min;Dziewczynka pochodzi z kolumbijskiej rodziny, która obdarzona jest magicznymi mocami. Niestety ona sama nie posiada tego daru.

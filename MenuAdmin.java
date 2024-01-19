@@ -49,13 +49,14 @@ public class MenuAdmin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //JOptionPane.showMessageDialog(buttonUstawienia,"Wybrałeś ustawienia");
+                admin.edytujFilm();
 
 
             }
         });
 
 
-        buttonWyloguj.addActionListener(e -> Logowanie.closeMenuWindow());
+        buttonWyloguj.addActionListener(e -> Logowanie.closeMenuAdminWindow());
         buttonWyloguj.addActionListener(e -> {
             Main.main(null);
         });

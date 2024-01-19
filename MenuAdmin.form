@@ -20,6 +20,15 @@
         </properties>
         <border type="none"/>
         <children>
+          <component id="9ee24" class="javax.swing.JLabel" binding="LableMenuAdmin">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-460303"/>
+              <text value="Menu Główne - Administrator"/>
+            </properties>
+          </component>
           <component id="8c941" class="javax.swing.JLabel" binding="LableLogo">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -28,15 +37,6 @@
               <horizontalAlignment value="11"/>
               <icon value="logo - DVDelfin2.jpg"/>
               <text value=""/>
-            </properties>
-          </component>
-          <component id="9ee24" class="javax.swing.JLabel" binding="LableMenuAdmin">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-460303"/>
-              <text value="Menu Główne - Administrator"/>
             </properties>
           </component>
         </children>
