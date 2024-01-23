@@ -69,7 +69,7 @@ public class WyborEdytowanegoFilmu extends JFrame{
             });
             galleryPanel.add(imageButton);
             bPowrot.addActionListener(e -> Admin.closeWyborEdytowanegoFilmuWindow());
-            bPowrot.addActionListener(e -> Logowanie.showMenuAdminWindow());
+            bPowrot.addActionListener(e -> Admin.showMenuAdminWindow());
 
         }
 

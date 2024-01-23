@@ -139,7 +139,7 @@ public class Ustawienia extends JFrame {
                         daneUzytkownika[indexUzytkownika][3]= nazwisko;
                     }
 
-                    if (!noweHaslo.toString().isEmpty()  && isEqual(stareHaslo, noweHaslo)) {
+                    if (!noweHaslo.toString().isEmpty()  && isEqual(stareHaslo, daneUzytkownika[indexUzytkownika][1].toCharArray())) {
                         klient.setHaslo(noweHaslo);
                         daneUzytkownika[indexUzytkownika][1]= new String(noweHaslo);
                     }
@@ -152,6 +152,7 @@ public class Ustawienia extends JFrame {
                     baza.zastapPlik(daneUzytkownika,nazwaPliku);
 
                     lKomunikat.setText("Zapisano zmiany");
+                    baza.log("Zmieniono ustawienia użytkownika: "+ klient.getLogin());
 
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);

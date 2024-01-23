@@ -115,6 +115,7 @@ public class WyswietlFilm extends JFrame {
                             klient.dodajDoPozyczonych(film.getTytul());
                             setCzyMoznaPozyczyc(false);
                             lKomunikat.setText("Wypożyczono film");
+                            b.log("Użytkownik " + klient.getLogin() + " wypożyczył film: "+film.getTytul());
                             repaint();
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
@@ -163,6 +164,7 @@ public class WyswietlFilm extends JFrame {
 
                                     setCzyMoznaPozyczyc(true);
                                     lKomunikat.setText("Oddano film");
+                                    b.log("Użytkownik " + klient.getLogin() + " oddał film: "+film.getTytul());
                                     repaint();
                                 } catch (IOException ex) {
                                     throw new RuntimeException(ex);

@@ -20,6 +20,8 @@ public class Klient extends Uzytkownik {
     static GaleriaWypozyczonych galeria;
     static Ustawienia u;
     static WypozyczFilm wp;
+
+    static MenuGlowne m;
     public Klient(){
         super();
     }
@@ -56,12 +58,13 @@ public class Klient extends Uzytkownik {
         galeria.setTitle("DVDelfin - Start");
         galeria.setSize(1400, getMaximumSize().height);
         galeria.setVisible(true);
-        Logowanie.hideMenuWindow();
+        Klient.hideMenuWindow();
         galeria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         galeria.setLocationRelativeTo(null);
 
 
     }
+
     public void wypozyczFilm(){
         wp = new WypozyczFilm(wypozyczoneFilmy,wszystkieFilmy,b,this);
         ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
@@ -70,7 +73,7 @@ public class Klient extends Uzytkownik {
         wp.setTitle("DVDelfin - Start");
         wp.setSize(1400,getMaximumSize().height);
         wp.setVisible(true);
-        Logowanie.hideMenuWindow();
+        Klient.hideMenuWindow();
         wp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wp.setLocationRelativeTo(null);
     }
@@ -87,22 +90,40 @@ public class Klient extends Uzytkownik {
         u.setTitle("DVDelfin - Start");
         u.setSize(500,400);
         u.setVisible(true);
-        Logowanie.hideMenuWindow();
+        hideMenuWindow();
         u.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         u.setLocationRelativeTo(null);
     }
 
+    public void otworzPanel(){
+        m = new MenuGlowne(this);
+        ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
+        m.setIconImage(icon.getImage());
+        m.setContentPane(m.getPanelMenuGlownego());
+        m.setTitle("DVDelfin - Start");
+        m.setSize(300,600);
+        m.setVisible(true);
+        m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        m.setLocationRelativeTo(null);
+    }
+
+    public static void hideMenuWindow(){ m.setVisible(false);}
+    public static void showMenuWindow(){ m.setVisible(true);}
+    public static void closeMenuWindow() {
+        m.dispose();
+    }
+
     public static void closeUstawieniaWindow(){
         u.dispose();
-        Logowanie.showMenuWindow();
+        showMenuWindow();
     }
     public static void closeWypozyczoneFilmyWindow(){
         galeria.dispose();
-        Logowanie.showMenuWindow();
+        showMenuWindow();
     }
     public static void closeWypozyczFilmWindow(){
         wp.dispose();
-        Logowanie.showMenuWindow();
+        showMenuWindow();
     }
     public static void hideWypozyczoneFilmyWindow(){ galeria.setVisible(false);}
     public static void showWypozyczoneFilmyWindow(){ galeria.setVisible(true);}
@@ -123,6 +144,7 @@ public class Klient extends Uzytkownik {
     public void usunZPozyczonych(String tytul){
         wypozyczoneFilmy.removeElement(tytul);
     }
+
 
     public Vector<String> getWypozyczoneFilmy(){
         return wypozyczoneFilmy;

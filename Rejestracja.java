@@ -250,6 +250,7 @@ public class Rejestracja extends JFrame {
                         dane[8]= eMail;
                         try {
                             baza.zapisDoPliku(dane,nazwaPliku);
+                            baza.log("Zarejestrowano nowego użytkownika: "+login);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }

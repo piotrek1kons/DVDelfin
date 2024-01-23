@@ -121,4 +121,14 @@ public class BazaDanych {
 
         return nowa;
     }
+
+    public void log(String info) throws IOException {
+        try (FileWriter file = new FileWriter("log.txt", true);
+             BufferedWriter buffor = new BufferedWriter(file)) {
+            buffor.write(info);
+            buffor.newLine();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }

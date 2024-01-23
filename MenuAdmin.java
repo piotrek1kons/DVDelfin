@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class MenuAdmin extends JFrame {
     private JPanel panelMenuAdmin;
@@ -13,6 +15,8 @@ public class MenuAdmin extends JFrame {
     private JButton buttonEdytujFilm;
     private JButton buttonWyloguj;
 
+    BazaDanych b = new BazaDanych();
+    String login;
     static Admin admin;
     public JPanel getPanelMenuAdmin() {
         return panelMenuAdmin;
@@ -22,7 +26,7 @@ public class MenuAdmin extends JFrame {
     }
 
     public MenuAdmin(Admin admin) {
-
+        login = admin.getLogin();
         buttonDodajFilm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,7 +38,11 @@ public class MenuAdmin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //JOptionPane.showMessageDialog(buttonOddajFilm,"Wybrałeś oddanie filmu");
-                admin.dodajFilm();
+                try {
+                    admin.usunFilm();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
         });
@@ -42,7 +50,12 @@ public class MenuAdmin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //JOptionPane.showMessageDialog(buttonSprawdzWypozyczoneFilmy,"Wybrałeś sprawdzenie wypozyczonych filmów");
-
+                try {
+                    admin.usunUzytkownika();
+                    Admin.hideMenuAdminWindow();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         buttonEdytujFilm.addActionListener(new ActionListener() {
@@ -56,9 +69,14 @@ public class MenuAdmin extends JFrame {
         });
 
 
-        buttonWyloguj.addActionListener(e -> Logowanie.closeMenuAdminWindow());
+        buttonWyloguj.addActionListener(e -> Admin.closeMenuAdminWindow());
         buttonWyloguj.addActionListener(e -> {
             Main.main(null);
+            try {
+                b.log("Wylogowano użytkownika: " +login);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 }

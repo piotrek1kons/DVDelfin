@@ -80,7 +80,7 @@ public class WypozyczFilm extends JFrame{
             });
             galleryPanel.add(imageButton);
             bPowrot.addActionListener(e -> Klient.hideWypozyczFilmWindow());
-            bPowrot.addActionListener(e -> Logowanie.showMenuWindow());
+            bPowrot.addActionListener(e -> Klient.showMenuWindow());
 
         }
 

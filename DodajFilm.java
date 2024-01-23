@@ -25,6 +25,7 @@ public class DodajFilm extends JFrame {
     JLabel lTitle,lTytul,lSciezka,lRezyser,lGatunek,lCzas,lOpis, lKomunikat;
     JTextField tTytul,tSciezka,tRezyser, tGatunek, tCzas, tOpis;
 
+
     String tytul, sciezka, rezyser, gatunek, czas, opis, komunikat;
 
     String[] daneFilmu;
@@ -168,6 +169,7 @@ public class DodajFilm extends JFrame {
 
                         baza.zapisDoPliku(daneFilmu,nazwaPliku);
                         lKomunikat.setText("Zapisano zmiany");
+                        baza.log("Dodano Film pt: "+ tytul);
 
                     }
 

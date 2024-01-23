@@ -3,16 +3,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class MenuGlowne extends JFrame {
     private JPanel panelGlowny;
     private JPanel panelTytulowy;
     private JButton buttonWypozyczFilm;
-    private JButton buttonOddajFilm;
     private JButton buttonSprawdzWypozyczoneFilmy;
     private JButton buttonUstawienia;
     private JButton buttonWyloguj;
-
+    String login;
+    BazaDanych b = new BazaDanych();
     static Klient klient;
 
     public JPanel getPanelMenuGlownego() {
@@ -23,6 +24,7 @@ public class MenuGlowne extends JFrame {
     }
 
     public MenuGlowne(Klient klient){
+        login = klient.getLogin();
         buttonWypozyczFilm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,14 +32,7 @@ public class MenuGlowne extends JFrame {
                 klient.wypozyczFilm();
             }
         });
-        buttonOddajFilm.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //JOptionPane.showMessageDialog(buttonOddajFilm,"Wybrałeś oddanie filmu");
 
-
-            }
-        });
         buttonSprawdzWypozyczoneFilmy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,9 +50,14 @@ public class MenuGlowne extends JFrame {
         });
 
 
-        buttonWyloguj.addActionListener(e -> Logowanie.closeMenuWindow());
+        buttonWyloguj.addActionListener(e -> Klient.closeMenuWindow());
         buttonWyloguj.addActionListener(e -> {
             Main.main(null);
+            try {
+                b.log("Wylogowano użytkownika: " + login);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
     }

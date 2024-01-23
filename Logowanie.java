@@ -20,10 +20,10 @@ public class Logowanie extends JFrame {
 
     String nazwaPliku = "user.txt";
     String[][] daneUzytkownika;
-    static MenuGlowne m;
-    static MenuAdmin a;
-    Klient klient;
-    Admin admin;
+
+
+    Uzytkownik klient;
+    Uzytkownik admin;
 
     public Logowanie(){
         setSize(300,250);
@@ -109,28 +109,14 @@ public class Logowanie extends JFrame {
                     }else{
                         if(daneUzytkownika[indexUzytkownika][0].equals("admin")){
                             admin = new Admin(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
+                            admin.otworzPanel();
+                            b.log("Zalogowano użytkownika: " + daneUzytkownika[indexUzytkownika][0]);
 
-                            a = new MenuAdmin(admin);
-                            ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
-                            a.setIconImage(icon.getImage());
-                            a.setContentPane(a.getPanelMenuAdmin());
-                            a.setTitle("DVDelfin - Start");
-                            a.setSize(300,600);
-                            a.setVisible(true);
-                            a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            a.setLocationRelativeTo(null);
                         }else{
                             klient = new Klient(daneUzytkownika[indexUzytkownika][0], daneUzytkownika[indexUzytkownika][1].toCharArray(),daneUzytkownika[indexUzytkownika][2],daneUzytkownika[indexUzytkownika][3],daneUzytkownika[indexUzytkownika][4],daneUzytkownika[indexUzytkownika][5],daneUzytkownika[indexUzytkownika][6],daneUzytkownika[indexUzytkownika][7],daneUzytkownika[indexUzytkownika][8]);
 
-                            m = new MenuGlowne(klient);
-                            ImageIcon icon = new ImageIcon("src/logo - DVDelfin2.jpg");
-                            m.setIconImage(icon.getImage());
-                            m.setContentPane(m.getPanelMenuGlownego());
-                            m.setTitle("DVDelfin - Start");
-                            m.setSize(300,600);
-                            m.setVisible(true);
-                            m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            m.setLocationRelativeTo(null);
+                            klient.otworzPanel();
+                            b.log("Zalogowano użytkownika: " + daneUzytkownika[indexUzytkownika][0]);
 
                         }
 
@@ -151,17 +137,7 @@ public class Logowanie extends JFrame {
 
     }
 
-    public static void hideMenuWindow(){ m.setVisible(false);}
-    public static void showMenuWindow(){ m.setVisible(true);}
-    public static void closeMenuWindow() {
-        m.dispose();
-    }
 
-    public static void hideMenuAdminWindow(){ a.setVisible(false);}
-    public static void showMenuAdminWindow(){ a.setVisible(true);}
-    public static void closeMenuAdminWindow() {
-        a.dispose();
-    }
 
     public boolean isEqual(char[] password1, char[] password2) {
         if (password1.length != password2.length || password1.length == 0 )

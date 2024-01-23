@@ -11,7 +11,7 @@ public class EdytujFilm extends JFrame {
     JLabel lTitle,lTytul,lSciezka,lRezyser,lGatunek,lCzas,lOpis, lKomunikat;
     JTextField tTytul,tSciezka,tRezyser, tGatunek, tCzas, tOpis;
 
-    String tytul, sciezka, rezyser, gatunek, czas, opis, komunikat;
+    String tytul, staryTytul, sciezka, rezyser, gatunek, czas, opis, komunikat;
 
     String[][] daneFilmu;
     String nazwaPliku = "filmy.txt";
@@ -132,6 +132,7 @@ public class EdytujFilm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //String[] dane = new String[4];
                 tytul = tTytul.getText();
+                staryTytul = tTytul.getText();
                 sciezka = tSciezka.getText();
                 rezyser = tRezyser.getText();
                 gatunek = tGatunek.getText();
@@ -179,6 +180,7 @@ public class EdytujFilm extends JFrame {
                     baza.zastapPlik(daneFilmu,nazwaPliku);
 
                     lKomunikat.setText("Zapisano zmiany");
+                    baza.log("Edytowano film pt. "+staryTytul);
 
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
